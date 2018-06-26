@@ -12,7 +12,7 @@ An Open Source logging API for JavaScript applications of all shapes and sizes.
 
 ![NPM License](https://img.shields.io/npm/l/woodsman.svg)
 ![NPM Version](https://img.shields.io/npm/v/woodsman.svg)
-[![Examples](https://www.libhive.com/providers/npm/packages/woodsman/examples/badge.svg)](https://www.libhive.com/providers/npm/packages/woodsman)
+[![Examples](https://www.libhive.com/providers/npm/packages/woodsman/examples/badge.svg)](https://www.libhive.com/providers/npm/packages/woodsman) [![Join the chat at https://gitter.im/haximilian/woodsman](https://badges.gitter.im/haximilian/woodsman.svg)](https://gitter.im/haximilian/woodsman?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 ![NPM Downloads](https://img.shields.io/npm/dt/woodsman.svg)
 ![NPM Downloads/week](https://img.shields.io/npm/dw/woodsman.svg)
 
