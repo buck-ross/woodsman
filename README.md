@@ -16,7 +16,7 @@ An Open Source logging API for JavaScript applications of all shapes and sizes.
 ![NPM Downloads](https://img.shields.io/npm/dt/woodsman.svg)
 ![NPM Downloads/week](https://img.shields.io/npm/dw/woodsman.svg)
 
-## [<img src="https://opensource.org/files/osi_symbol.png" style="width: 40px;">](https://opensource.org/licenses/AGPL-3.0) License
+## [<img src="https://opensource.org/files/osi_symbol.png" width="50">](https://opensource.org/licenses/AGPL-3.0) License
 Copyright &copy; 2018 Haximilian<br/>
 **This project is licensed under the [GNU Affero General Public License Agreement v3.0 (AGPL-3.0)](https://opensource.org/licenses/AGPL-3.0).**<br>
 For a complete copy of the license, please see the included "LICENSE" file.
