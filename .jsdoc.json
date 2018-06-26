@@ -1,0 +1,13 @@
+{
+  "opts": {
+    "recurse": true,
+    "verbose": true,
+    "readme": "README.md",
+    "destination": "build/jsdoc"
+  },
+  "plugins": [ "plugins/markdown", "plugins/summarize" ],
+  "source": {
+    "excludePattern": "build/jsdoc|node_modules|/[.].+",
+    "includePattern": ".+\\.js(doc|x)?$"
+  }
+}
