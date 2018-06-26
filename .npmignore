@@ -8,8 +8,8 @@
 /doc
 /build/jsdoc
 
-# Ignore all pre-compiled source files and unit tests:
-/src
+# Ignore all source files and unit tests:
+/src/*
 /test
 
 # Ignore all build assets:

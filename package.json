@@ -1,6 +1,6 @@
 {
   "name": "woodsman",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "An Open Source logging API for JavaScript applications of all shapes and sizes",
   "license": "AGPL-3.0",
   "repository": {
@@ -23,8 +23,7 @@
     "requirejs": "^2.3.5"
   },
   "devDependencies": {
-    "eslint": "^4.18.2",
-    "google-closure-compiler-js": "^20180506.0.0",
+    "eslint": "^5.0.1",
     "jsdoc": "^3.5.5",
     "mocha": "^5.0.5"
   }
