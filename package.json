@@ -8,11 +8,12 @@
     "url": "https://github.com/haximilian/woodsman.git"
   },
   "author": "Haximilian <haximilian@gmail.com>",
-  "main": "src/woodsman.js",
+  "main": "build/woodsman.min.js",
   "scripts": {
-    "test": "mocha",
+    "build": "google-closure-compiler --compilation_level ADVANCED_OPTIMIZATIONS --externs node_modules/haximilian-closure-externs/extern/amd.js --externs extern/*.js --language_in ECMASCRIPT6 --language_out ECMASCRIPT3 --js src/woodsman.js --js_output_file build/woodsman.min.js",
+    "doc": "jsdoc --configure .jsdoc.json .",
     "lint": "eslint --ext .js,.jsx,.jsdoc --fix .",
-    "doc": "jsdoc --configure .jsdoc.json ."
+    "test": "mocha"
   },
   "keywords": [
     "logging",
@@ -24,6 +25,8 @@
   },
   "devDependencies": {
     "eslint": "^5.0.1",
+    "google-closure-compiler": "^20180610.0.2",
+    "haximilian-closure-externs": "^1.0.0",
     "jsdoc": "^3.5.5",
     "mocha": "^5.0.5"
   }

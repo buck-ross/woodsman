@@ -5,16 +5,17 @@
 /.gitignore
 
 # Ignore all documentation (excluding the README):
-/doc
 /build/jsdoc
 
 # Ignore all source files and unit tests:
-/src/*
+/src
 /test
+
+# Ignore all API definitions:
+/extern
 
 # Ignore all build assets:
 /.jsdoc.json
-/build.js
 
 # Ignore all editor assistants:
 /.eslintignore

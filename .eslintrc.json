@@ -5,8 +5,10 @@
     "ecmaVersion": 6
   },
   "env": {
-    "amd": true,
-    "browser": true
+    "amd": true
+  },
+  "globals": {
+    "console": false
   },
   "rules": {
     "unicode-bom": "warn",
@@ -32,10 +34,6 @@
     "dot-location": [
       "warn",
       "property"
-    ],
-    "dot-notation": [
-      "warn",
-      { "allowKeywords": false }
     ],
     "eqeqeq": [
       "error",
@@ -263,10 +261,6 @@
     "padded-blocks": [
       "warn",
       "never"
-    ],
-    "quote-props": [
-      "warn",
-      "consistent-as-needed"
     ],
     "quotes": [
       "warn",
