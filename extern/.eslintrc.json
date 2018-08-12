@@ -1,0 +1,14 @@
+{
+  "env": {
+    "amd": false
+  },
+  "rules": {
+    "no-empty-function": "off",
+    "no-implicit-globals": "off",
+    "no-restricted-properties": "off",
+    "no-unused-expressions": "off",
+    "no-unused-vars": "off",
+    "strict": "off",
+    "valid-jsdoc": "off"
+  }
+}

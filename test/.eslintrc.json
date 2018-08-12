@@ -2,5 +2,11 @@
   "env": {
     "node": true,
     "mocha": true
+  },
+  "rules": {
+    "max-statements": "off",
+    "no-empty-function": "off",
+    "no-invalid-this": "off",
+    "no-magic-numbers": "off"
   }
 }

@@ -11,12 +11,10 @@
 /src
 /test
 
-# Ignore all API definitions:
-/extern
-
 # Ignore all build assets:
 /.jsdoc.json
 
 # Ignore all editor assistants:
 /.eslintignore
 /.eslintrc.json
+**/.eslintrc.json
