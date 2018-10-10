@@ -108,10 +108,8 @@ describe("The ConsoleBackend provider", function() {
     it("should work when provided with minimal input", function() {
       // Send data:
       subject.push({
-        origin: {
-          app: "APP",
-          logger: "LOGGER"
-        },
+        app: "APP",
+        logger: "LOGGER",
         type: "log",
         level: 10,
         message: "This is a sample message"
@@ -134,10 +132,8 @@ describe("The ConsoleBackend provider", function() {
 
       // Send data:
       subject.push({
-        origin: {
-          app: "APP",
-          logger: "LOGGER"
-        },
+        app: "APP",
+        logger: "LOGGER",
         type: "log",
         level: 10,
         message: "This is a sample message"
@@ -163,10 +159,8 @@ describe("The ConsoleBackend provider", function() {
 
       // Send data:
       subject.push({
-        origin: {
-          app: "STUFF",
-          logger: "THING"
-        },
+        app: "STUFF",
+        logger: "THING",
         type: "log",
         level: 0,
         message: "Another message",
@@ -194,10 +188,8 @@ describe("The ConsoleBackend provider", function() {
 
       // Send data:
       subject.push({
-        origin: {
-          app: "first",
-          logger: "second"
-        },
+        app: "first",
+        logger: "second",
         type: "log",
         level: 80,
         message: "Another message",
@@ -226,10 +218,8 @@ describe("The ConsoleBackend provider", function() {
 
       // Send data:
       subject.push({
-        origin: {
-          app: "STUFF",
-          logger: "THING"
-        },
+        app: "STUFF",
+        logger: "THING",
         type: "info",
         level: 0,
         message: "Another message",
@@ -258,10 +248,8 @@ describe("The ConsoleBackend provider", function() {
 
       // Send data:
       subject.push({
-        origin: {
-          app: "STUFF",
-          logger: "THING"
-        },
+        app: "STUFF",
+        logger: "THING",
         type: "warn",
         level: 0,
         message: "Another message",
@@ -290,10 +278,8 @@ describe("The ConsoleBackend provider", function() {
 
       // Send data:
       subject.push({
-        origin: {
-          app: "STUFF",
-          logger: "THING"
-        },
+        app: "STUFF",
+        logger: "THING",
         type: "error",
         level: 0,
         message: "Another message",

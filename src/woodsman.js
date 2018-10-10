@@ -96,7 +96,7 @@ define(() => {
   /**
   * Execute the actual process of formatting the logging content & transfering it to the backends
   */
-  Manager.prototype.process = function() {
+  var process = function() {
     // Preserve the "this" reference for scheduled functions:
     var that = this;
 
@@ -125,7 +125,7 @@ define(() => {
       }
 
       // Deal with group entries:
-      if (typeof that.queue[queueIndex].name === "string") {
+      if (typeof that.queue[queueIndex].group === "object") {
         // Deal with group elements:
         if (typeof that.queue[queueIndex].group[groupIndex].group === "string")
           tmpEntry = { group: that.queue[queueIndex].group[groupIndex].group };
@@ -135,36 +135,20 @@ define(() => {
           tmpEntry = { groupEnd: true };
 
         // Deal with all other internal elements:
-        else
-          tmpEntry = {
-            origin: {
-              app: that.name,
-              logger: that.queue[queueIndex].group[groupIndex].from
-            },
-            type: that.queue[queueIndex].group[groupIndex].type,
-            message: that.queue[queueIndex].group[groupIndex].message,
-            level: that.queue[queueIndex].group[groupIndex].level,
-            trace: that.queue[queueIndex].group[groupIndex].trace,
-            timestamp: that.queue[queueIndex].group[groupIndex].timestamp
-          };
+        else {
+          tmpEntry = that.queue[queueIndex].group[groupIndex];
+          tmpEntry.app = that.name;
+        }
 
         // Change the Group Index:
         if (++groupIndex === that.queue[queueIndex].group.length)
           groupIndex = 0;
 
       // Deal with individual entries:
-      } else
-        tmpEntry = {
-          origin: {
-            app: that.name,
-            logger: that.queue[queueIndex].from
-          },
-          type: that.queue[queueIndex].type,
-          message: that.queue[queueIndex].message,
-          level: that.queue[queueIndex].level,
-          trace: that.queue[queueIndex].trace,
-          timestamp: that.queue[queueIndex].timestamp
-        };
+      } else {
+        tmpEntry = that.queue[queueIndex];
+        tmpEntry.app = that.name;
+      }
 
       // Schedule the pusher:
       that.scheduler(pusher);
@@ -218,14 +202,14 @@ define(() => {
   */
   Manager.prototype.push = function(entry) {
     // Push the message to the appropriate queue:
-    if (typeof this.groups[entry.from] === "undefined") {
+    if (typeof this.groups[entry.logger] === "undefined") {
       this.queue.push(entry);
 
       // If the queue is not currently being processed, trigger the processing system:
       if (!this.processing)
-        this.process();
+        process.call(this);
     } else
-      this.groups[entry.from].group.push(entry);
+      this.groups[entry.logger].group.push(entry);
   };
 
   /**
@@ -261,7 +245,7 @@ define(() => {
 
       // If the queue is not currently being processed, trigger the processing system:
       if (!this.processing)
-        this.process();
+        process.call(this);
     }
   };
 
@@ -442,7 +426,7 @@ define(() => {
   */
   Console.prototype.push = function(input, callback) {
     // Assemble the message to print to the console:
-    var message = "[" + input.origin.app + ":" + input.origin.logger + "@" + input.level + "]";
+    var message = "[" + input.app + ":" + input.logger + "@" + input.level + "]";
     if (input.timestamp)
       message += " " + input.timestamp;
     message += ": " + input.message;

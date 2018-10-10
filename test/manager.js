@@ -131,13 +131,13 @@ describe("The Manager provider", function() {
 
         // Run the test:
         subject.push({
-          from: "LOGGER", type: "log", message: "This is a message", level: 10, timestamp: "This is a timestamp", trace: "This is a trace"
+          logger: "LOGGER", type: "log", message: "This is a message", level: 10, timestamp: "This is a timestamp", trace: "This is a trace"
         });
 
         // Test the output:
         assert.equal(results.length, 1, "The Backend was not called exactly once");
         assert.deepEqual(results[0], {
-          origin: { app: "APP", logger: "LOGGER" }, type: "log", message: "This is a message", level: 10, trace: "This is a trace", timestamp: "This is a timestamp"
+          app: "APP", logger: "LOGGER", type: "log", message: "This is a message", level: 10, trace: "This is a trace", timestamp: "This is a timestamp"
         }, "The caller failed to provide the correct input");
       });
 
@@ -161,67 +161,67 @@ describe("The Manager provider", function() {
 
         // Run the test:
         subject.push({
-          from: "LOGGER", type: "log", message: "This is a message", level: 1, timestamp: "This is a timestamp", trace: "This is a trace"
+          logger: "LOGGER", type: "log", message: "This is a message", level: 1, timestamp: "This is a timestamp", trace: "This is a trace"
         });
         subject.push({
-          from: "LOGGER2", type: "error", message: "This is a message 2", level: 2, timestamp: "This is a timestamp 2", trace: "This is a trace 2"
+          logger: "LOGGER2", type: "error", message: "This is a message 2", level: 2, timestamp: "This is a timestamp 2", trace: "This is a trace 2"
         });
         subject.push({
-          from: "LOGGER3", type: "log", message: "This is a message 3", level: 3, timestamp: "This is a timestamp 3", trace: "This is a trace 3"
+          logger: "LOGGER3", type: "log", message: "This is a message 3", level: 3, timestamp: "This is a timestamp 3", trace: "This is a trace 3"
         });
         subject.push({
-          from: "LOGGER4", type: "info", message: "This is a message 4", level: 4, timestamp: "This is a timestamp 4", trace: "This is a trace 4"
+          logger: "LOGGER4", type: "info", message: "This is a message 4", level: 4, timestamp: "This is a timestamp 4", trace: "This is a trace 4"
         });
         subject.push({
-          from: "LOGGER5", type: "log", message: "This is a message 5", level: 5, timestamp: "This is a timestamp 5", trace: "This is a trace 5"
+          logger: "LOGGER5", type: "log", message: "This is a message 5", level: 5, timestamp: "This is a timestamp 5", trace: "This is a trace 5"
         });
         subject.push({
-          from: "LOGGER6", type: "warn", message: "This is a message 6", level: 6, timestamp: "This is a timestamp 6", trace: "This is a trace 6"
+          logger: "LOGGER6", type: "warn", message: "This is a message 6", level: 6, timestamp: "This is a timestamp 6", trace: "This is a trace 6"
         });
         subject.push({
-          from: "LOGGER7", type: "log", message: "This is a message 7", level: 7, timestamp: "This is a timestamp 7", trace: "This is a trace 7"
+          logger: "LOGGER7", type: "log", message: "This is a message 7", level: 7, timestamp: "This is a timestamp 7", trace: "This is a trace 7"
         });
         subject.push({
-          from: "LOGGER8", type: "info", message: "This is a message 8", level: 8, timestamp: "This is a timestamp 8", trace: "This is a trace 8"
+          logger: "LOGGER8", type: "info", message: "This is a message 8", level: 8, timestamp: "This is a timestamp 8", trace: "This is a trace 8"
         });
         subject.push({
-          from: "LOGGER9", type: "log", message: "This is a message 9", level: 9, timestamp: "This is a timestamp 9", trace: "This is a trace 9"
+          logger: "LOGGER9", type: "log", message: "This is a message 9", level: 9, timestamp: "This is a timestamp 9", trace: "This is a trace 9"
         });
         subject.push({
-          from: "LOGGER0", type: "error", message: "This is a message 0", level: 10, timestamp: "This is a timestamp 0", trace: "This is a trace 0"
+          logger: "LOGGER0", type: "error", message: "This is a message 0", level: 10, timestamp: "This is a timestamp 0", trace: "This is a trace 0"
         });
 
         // Test the output:
         assert.equal(results.length, 10, "The Backend was not called exactly ten times");
         assert.deepEqual(results[0], {
-          origin: { app: "APP", logger: "LOGGER" }, type: "log", message: "This is a message", level: 1, trace: "This is a trace", timestamp: "This is a timestamp"
+          app: "APP", logger: "LOGGER", type: "log", message: "This is a message", level: 1, trace: "This is a trace", timestamp: "This is a timestamp"
         }, "The caller failed to provide the correct input for the first call");
         assert.deepEqual(results[1], {
-          origin: { app: "APP", logger: "LOGGER2" }, type: "error", message: "This is a message 2", level: 2, trace: "This is a trace 2", timestamp: "This is a timestamp 2"
+          app: "APP", logger: "LOGGER2", type: "error", message: "This is a message 2", level: 2, trace: "This is a trace 2", timestamp: "This is a timestamp 2"
         }, "The caller failed to provide the correct input for the second call");
         assert.deepEqual(results[2], {
-          origin: { app: "APP", logger: "LOGGER3" }, type: "log", message: "This is a message 3", level: 3, trace: "This is a trace 3", timestamp: "This is a timestamp 3"
+          app: "APP", logger: "LOGGER3", type: "log", message: "This is a message 3", level: 3, trace: "This is a trace 3", timestamp: "This is a timestamp 3"
         }, "The caller failed to provide the correct input for the third call");
         assert.deepEqual(results[3], {
-          origin: { app: "APP", logger: "LOGGER4" }, type: "info", message: "This is a message 4", level: 4, trace: "This is a trace 4", timestamp: "This is a timestamp 4"
+          app: "APP", logger: "LOGGER4", type: "info", message: "This is a message 4", level: 4, trace: "This is a trace 4", timestamp: "This is a timestamp 4"
         }, "The caller failed to provide the correct input for the fourth call");
         assert.deepEqual(results[4], {
-          origin: { app: "APP", logger: "LOGGER5" }, type: "log", message: "This is a message 5", level: 5, trace: "This is a trace 5", timestamp: "This is a timestamp 5"
+          app: "APP", logger: "LOGGER5", type: "log", message: "This is a message 5", level: 5, trace: "This is a trace 5", timestamp: "This is a timestamp 5"
         }, "The caller failed to provide the correct input for the fifth call");
         assert.deepEqual(results[5], {
-          origin: { app: "APP", logger: "LOGGER6" }, type: "warn", message: "This is a message 6", level: 6, trace: "This is a trace 6", timestamp: "This is a timestamp 6"
+          app: "APP", logger: "LOGGER6", type: "warn", message: "This is a message 6", level: 6, trace: "This is a trace 6", timestamp: "This is a timestamp 6"
         }, "The caller failed to provide the correct input for the sixth call");
         assert.deepEqual(results[6], {
-          origin: { app: "APP", logger: "LOGGER7" }, type: "log", message: "This is a message 7", level: 7, trace: "This is a trace 7", timestamp: "This is a timestamp 7"
+          app: "APP", logger: "LOGGER7", type: "log", message: "This is a message 7", level: 7, trace: "This is a trace 7", timestamp: "This is a timestamp 7"
         }, "The caller failed to provide the correct input for the seventh call");
         assert.deepEqual(results[7], {
-          origin: { app: "APP", logger: "LOGGER8" }, type: "info", message: "This is a message 8", level: 8, trace: "This is a trace 8", timestamp: "This is a timestamp 8"
+          app: "APP", logger: "LOGGER8", type: "info", message: "This is a message 8", level: 8, trace: "This is a trace 8", timestamp: "This is a timestamp 8"
         }, "The caller failed to provide the correct input for the eighth call");
         assert.deepEqual(results[8], {
-          origin: { app: "APP", logger: "LOGGER9" }, type: "log", message: "This is a message 9", level: 9, trace: "This is a trace 9", timestamp: "This is a timestamp 9"
+          app: "APP", logger: "LOGGER9", type: "log", message: "This is a message 9", level: 9, trace: "This is a trace 9", timestamp: "This is a timestamp 9"
         }, "The caller failed to provide the correct input for the ninth call");
         assert.deepEqual(results[9], {
-          origin: { app: "APP", logger: "LOGGER0" }, type: "error", message: "This is a message 0", level: 10, trace: "This is a trace 0", timestamp: "This is a timestamp 0"
+          app: "APP", logger: "LOGGER0", type: "error", message: "This is a message 0", level: 10, trace: "This is a trace 0", timestamp: "This is a timestamp 0"
         }, "The caller failed to provide the correct input for the tenth call");
       });
 
@@ -249,32 +249,32 @@ describe("The Manager provider", function() {
 
         // Run the test:
         subject.push({
-          from: "LOGGER", type: "warn", message: "This is a message", level: 1, timestamp: "This is a timestamp", trace: "This is a trace"
+          logger: "LOGGER", type: "warn", message: "This is a message", level: 1, timestamp: "This is a timestamp", trace: "This is a trace"
         });
         subject.push({
-          from: "LOGGER2", type: "error", message: "This is a message 2", level: 2, timestamp: "This is a timestamp 2", trace: "This is a trace 2"
+          logger: "LOGGER2", type: "error", message: "This is a message 2", level: 2, timestamp: "This is a timestamp 2", trace: "This is a trace 2"
         });
         subject.push({
-          from: "LOGGER3", type: "log", message: "This is a message 3", level: 3, timestamp: "This is a timestamp 3", trace: "This is a trace 3"
+          logger: "LOGGER3", type: "log", message: "This is a message 3", level: 3, timestamp: "This is a timestamp 3", trace: "This is a trace 3"
         });
         subject.push({
-          from: "LOGGER4", type: "info", message: "This is a message 4", level: 4, timestamp: "This is a timestamp 4", trace: "This is a trace 4"
+          logger: "LOGGER4", type: "info", message: "This is a message 4", level: 4, timestamp: "This is a timestamp 4", trace: "This is a trace 4"
         });
 
         // Test the output:
         for (let count = 0; count < 10; count++) {
           assert.equal(results[count].length, 4, "Backend #" + count + " was not called exactly six times");
           assert.deepEqual(results[count][0], {
-            origin: { app: "APP", logger: "LOGGER" }, type: "warn", message: "This is a message", level: 1, trace: "This is a trace", timestamp: "This is a timestamp"
+            app: "APP", logger: "LOGGER", type: "warn", message: "This is a message", level: 1, trace: "This is a trace", timestamp: "This is a timestamp"
           }, "The caller failed to provide the correct input for the first call on backend #" + count);
           assert.deepEqual(results[count][1], {
-            origin: { app: "APP", logger: "LOGGER2" }, type: "error", message: "This is a message 2", level: 2, trace: "This is a trace 2", timestamp: "This is a timestamp 2"
+            app: "APP", logger: "LOGGER2", type: "error", message: "This is a message 2", level: 2, trace: "This is a trace 2", timestamp: "This is a timestamp 2"
           }, "The caller failed to provide the correct input for the second call on backend #" + count);
           assert.deepEqual(results[count][2], {
-            origin: { app: "APP", logger: "LOGGER3" }, type: "log", message: "This is a message 3", level: 3, trace: "This is a trace 3", timestamp: "This is a timestamp 3"
+            app: "APP", logger: "LOGGER3", type: "log", message: "This is a message 3", level: 3, trace: "This is a trace 3", timestamp: "This is a timestamp 3"
           }, "The caller failed to provide the correct input for the third call on backend #" + count);
           assert.deepEqual(results[count][3], {
-            origin: { app: "APP", logger: "LOGGER4" }, type: "info", message: "This is a message 4", level: 4, trace: "This is a trace 4", timestamp: "This is a timestamp 4"
+            app: "APP", logger: "LOGGER4", type: "info", message: "This is a message 4", level: 4, trace: "This is a trace 4", timestamp: "This is a timestamp 4"
           }, "The caller failed to provide the correct input for the fourth call on backend #" + count);
         }
       });
@@ -305,7 +305,7 @@ describe("The Manager provider", function() {
 
         // Run the test:
         subject.push({
-          from: "LOGGER", type: "log", message: "This is a message", level: 10, timestamp: "This is a timestamp", trace: "This is a trace"
+          logger: "LOGGER", type: "log", message: "This is a message", level: 10, timestamp: "This is a timestamp", trace: "This is a trace"
         });
 
         // Make sure that nothing has happened yet:
@@ -320,7 +320,7 @@ describe("The Manager provider", function() {
         // Test the output:
         assert.equal(results.length, 1, "The Backend was not called exactly once");
         assert.deepEqual(results[0], {
-          origin: { app: "APP", logger: "LOGGER" }, type: "log", message: "This is a message", level: 10, trace: "This is a trace", timestamp: "This is a timestamp"
+          app: "APP", logger: "LOGGER", type: "log", message: "This is a message", level: 10, trace: "This is a trace", timestamp: "This is a timestamp"
         }, "The caller failed to provide the correct input");
       });
 
@@ -345,34 +345,34 @@ describe("The Manager provider", function() {
 
         // Run the test:
         subject.push({
-          from: "LOGGER", type: "log", message: "This is a message", level: 1, timestamp: "This is a timestamp", trace: "This is a trace"
+          logger: "LOGGER", type: "log", message: "This is a message", level: 1, timestamp: "This is a timestamp", trace: "This is a trace"
         });
         subject.push({
-          from: "LOGGER2", type: "error", message: "This is a message 2", level: 2, timestamp: "This is a timestamp 2", trace: "This is a trace 2"
+          logger: "LOGGER2", type: "error", message: "This is a message 2", level: 2, timestamp: "This is a timestamp 2", trace: "This is a trace 2"
         });
         subject.push({
-          from: "LOGGER3", type: "log", message: "This is a message 3", level: 3, timestamp: "This is a timestamp 3", trace: "This is a trace 3"
+          logger: "LOGGER3", type: "log", message: "This is a message 3", level: 3, timestamp: "This is a timestamp 3", trace: "This is a trace 3"
         });
         subject.push({
-          from: "LOGGER4", type: "info", message: "This is a message 4", level: 4, timestamp: "This is a timestamp 4", trace: "This is a trace 4"
+          logger: "LOGGER4", type: "info", message: "This is a message 4", level: 4, timestamp: "This is a timestamp 4", trace: "This is a trace 4"
         });
         subject.push({
-          from: "LOGGER5", type: "log", message: "This is a message 5", level: 5, timestamp: "This is a timestamp 5", trace: "This is a trace 5"
+          logger: "LOGGER5", type: "log", message: "This is a message 5", level: 5, timestamp: "This is a timestamp 5", trace: "This is a trace 5"
         });
         subject.push({
-          from: "LOGGER6", type: "warn", message: "This is a message 6", level: 6, timestamp: "This is a timestamp 6", trace: "This is a trace 6"
+          logger: "LOGGER6", type: "warn", message: "This is a message 6", level: 6, timestamp: "This is a timestamp 6", trace: "This is a trace 6"
         });
         subject.push({
-          from: "LOGGER7", type: "log", message: "This is a message 7", level: 7, timestamp: "This is a timestamp 7", trace: "This is a trace 7"
+          logger: "LOGGER7", type: "log", message: "This is a message 7", level: 7, timestamp: "This is a timestamp 7", trace: "This is a trace 7"
         });
         subject.push({
-          from: "LOGGER8", type: "info", message: "This is a message 8", level: 8, timestamp: "This is a timestamp 8", trace: "This is a trace 8"
+          logger: "LOGGER8", type: "info", message: "This is a message 8", level: 8, timestamp: "This is a timestamp 8", trace: "This is a trace 8"
         });
         subject.push({
-          from: "LOGGER9", type: "log", message: "This is a message 9", level: 9, timestamp: "This is a timestamp 9", trace: "This is a trace 9"
+          logger: "LOGGER9", type: "log", message: "This is a message 9", level: 9, timestamp: "This is a timestamp 9", trace: "This is a trace 9"
         });
         subject.push({
-          from: "LOGGER0", type: "error", message: "This is a message 0", level: 10, timestamp: "This is a timestamp 0", trace: "This is a trace 0"
+          logger: "LOGGER0", type: "error", message: "This is a message 0", level: 10, timestamp: "This is a timestamp 0", trace: "This is a trace 0"
         });
 
         // Make sure that nothing has happened yet:
@@ -387,34 +387,34 @@ describe("The Manager provider", function() {
         // Test the output:
         assert.equal(results.length, 10, "The Backend was not called exactly ten times");
         assert.deepEqual(results[0], {
-          origin: { app: "APP", logger: "LOGGER" }, type: "log", message: "This is a message", level: 1, trace: "This is a trace", timestamp: "This is a timestamp"
+          app: "APP", logger: "LOGGER", type: "log", message: "This is a message", level: 1, trace: "This is a trace", timestamp: "This is a timestamp"
         }, "The caller failed to provide the correct input for the first call");
         assert.deepEqual(results[1], {
-          origin: { app: "APP", logger: "LOGGER2" }, type: "error", message: "This is a message 2", level: 2, trace: "This is a trace 2", timestamp: "This is a timestamp 2"
+          app: "APP", logger: "LOGGER2", type: "error", message: "This is a message 2", level: 2, trace: "This is a trace 2", timestamp: "This is a timestamp 2"
         }, "The caller failed to provide the correct input for the second call");
         assert.deepEqual(results[2], {
-          origin: { app: "APP", logger: "LOGGER3" }, type: "log", message: "This is a message 3", level: 3, trace: "This is a trace 3", timestamp: "This is a timestamp 3"
+          app: "APP", logger: "LOGGER3", type: "log", message: "This is a message 3", level: 3, trace: "This is a trace 3", timestamp: "This is a timestamp 3"
         }, "The caller failed to provide the correct input for the third call");
         assert.deepEqual(results[3], {
-          origin: { app: "APP", logger: "LOGGER4" }, type: "info", message: "This is a message 4", level: 4, trace: "This is a trace 4", timestamp: "This is a timestamp 4"
+          app: "APP", logger: "LOGGER4", type: "info", message: "This is a message 4", level: 4, trace: "This is a trace 4", timestamp: "This is a timestamp 4"
         }, "The caller failed to provide the correct input for the fourth call");
         assert.deepEqual(results[4], {
-          origin: { app: "APP", logger: "LOGGER5" }, type: "log", message: "This is a message 5", level: 5, trace: "This is a trace 5", timestamp: "This is a timestamp 5"
+          app: "APP", logger: "LOGGER5", type: "log", message: "This is a message 5", level: 5, trace: "This is a trace 5", timestamp: "This is a timestamp 5"
         }, "The caller failed to provide the correct input for the fifth call");
         assert.deepEqual(results[5], {
-          origin: { app: "APP", logger: "LOGGER6" }, type: "warn", message: "This is a message 6", level: 6, trace: "This is a trace 6", timestamp: "This is a timestamp 6"
+          app: "APP", logger: "LOGGER6", type: "warn", message: "This is a message 6", level: 6, trace: "This is a trace 6", timestamp: "This is a timestamp 6"
         }, "The caller failed to provide the correct input for the sixth call");
         assert.deepEqual(results[6], {
-          origin: { app: "APP", logger: "LOGGER7" }, type: "log", message: "This is a message 7", level: 7, trace: "This is a trace 7", timestamp: "This is a timestamp 7"
+          app: "APP", logger: "LOGGER7", type: "log", message: "This is a message 7", level: 7, trace: "This is a trace 7", timestamp: "This is a timestamp 7"
         }, "The caller failed to provide the correct input for the seventh call");
         assert.deepEqual(results[7], {
-          origin: { app: "APP", logger: "LOGGER8" }, type: "info", message: "This is a message 8", level: 8, trace: "This is a trace 8", timestamp: "This is a timestamp 8"
+          app: "APP", logger: "LOGGER8", type: "info", message: "This is a message 8", level: 8, trace: "This is a trace 8", timestamp: "This is a timestamp 8"
         }, "The caller failed to provide the correct input for the eighth call");
         assert.deepEqual(results[8], {
-          origin: { app: "APP", logger: "LOGGER9" }, type: "log", message: "This is a message 9", level: 9, trace: "This is a trace 9", timestamp: "This is a timestamp 9"
+          app: "APP", logger: "LOGGER9", type: "log", message: "This is a message 9", level: 9, trace: "This is a trace 9", timestamp: "This is a timestamp 9"
         }, "The caller failed to provide the correct input for the ninth call");
         assert.deepEqual(results[9], {
-          origin: { app: "APP", logger: "LOGGER0" }, type: "error", message: "This is a message 0", level: 10, trace: "This is a trace 0", timestamp: "This is a timestamp 0"
+          app: "APP", logger: "LOGGER0", type: "error", message: "This is a message 0", level: 10, trace: "This is a trace 0", timestamp: "This is a timestamp 0"
         }, "The caller failed to provide the correct input for the tenth call");
       });
 
@@ -439,44 +439,44 @@ describe("The Manager provider", function() {
 
         // Run the test:
         subject.push({
-          from: "LOGGER", type: "log", message: "This is a message", level: 1, timestamp: "This is a timestamp", trace: "This is a trace"
+          logger: "LOGGER", type: "log", message: "This is a message", level: 1, timestamp: "This is a timestamp", trace: "This is a trace"
         });
         eventLoop.shift()();
         subject.push({
-          from: "LOGGER2", type: "error", message: "This is a message 2", level: 2, timestamp: "This is a timestamp 2", trace: "This is a trace 2"
-        });
-        eventLoop.shift()();
-        eventLoop.shift()();
-        subject.push({
-          from: "LOGGER3", type: "log", message: "This is a message 3", level: 3, timestamp: "This is a timestamp 3", trace: "This is a trace 3"
-        });
-        subject.push({
-          from: "LOGGER4", type: "info", message: "This is a message 4", level: 4, timestamp: "This is a timestamp 4", trace: "This is a trace 4"
-        });
-        eventLoop.shift()();
-        subject.push({
-          from: "LOGGER5", type: "log", message: "This is a message 5", level: 5, timestamp: "This is a timestamp 5", trace: "This is a trace 5"
-        });
-        eventLoop.shift()();
-        eventLoop.shift()();
-        eventLoop.shift()();
-        subject.push({
-          from: "LOGGER6", type: "warn", message: "This is a message 6", level: 6, timestamp: "This is a timestamp 6", trace: "This is a trace 6"
-        });
-        subject.push({
-          from: "LOGGER7", type: "log", message: "This is a message 7", level: 7, timestamp: "This is a timestamp 7", trace: "This is a trace 7"
-        });
-        eventLoop.shift()();
-        subject.push({
-          from: "LOGGER8", type: "info", message: "This is a message 8", level: 8, timestamp: "This is a timestamp 8", trace: "This is a trace 8"
-        });
-        subject.push({
-          from: "LOGGER9", type: "log", message: "This is a message 9", level: 9, timestamp: "This is a timestamp 9", trace: "This is a trace 9"
+          logger: "LOGGER2", type: "error", message: "This is a message 2", level: 2, timestamp: "This is a timestamp 2", trace: "This is a trace 2"
         });
         eventLoop.shift()();
         eventLoop.shift()();
         subject.push({
-          from: "LOGGER0", type: "error", message: "This is a message 0", level: 10, timestamp: "This is a timestamp 0", trace: "This is a trace 0"
+          logger: "LOGGER3", type: "log", message: "This is a message 3", level: 3, timestamp: "This is a timestamp 3", trace: "This is a trace 3"
+        });
+        subject.push({
+          logger: "LOGGER4", type: "info", message: "This is a message 4", level: 4, timestamp: "This is a timestamp 4", trace: "This is a trace 4"
+        });
+        eventLoop.shift()();
+        subject.push({
+          logger: "LOGGER5", type: "log", message: "This is a message 5", level: 5, timestamp: "This is a timestamp 5", trace: "This is a trace 5"
+        });
+        eventLoop.shift()();
+        eventLoop.shift()();
+        eventLoop.shift()();
+        subject.push({
+          logger: "LOGGER6", type: "warn", message: "This is a message 6", level: 6, timestamp: "This is a timestamp 6", trace: "This is a trace 6"
+        });
+        subject.push({
+          logger: "LOGGER7", type: "log", message: "This is a message 7", level: 7, timestamp: "This is a timestamp 7", trace: "This is a trace 7"
+        });
+        eventLoop.shift()();
+        subject.push({
+          logger: "LOGGER8", type: "info", message: "This is a message 8", level: 8, timestamp: "This is a timestamp 8", trace: "This is a trace 8"
+        });
+        subject.push({
+          logger: "LOGGER9", type: "log", message: "This is a message 9", level: 9, timestamp: "This is a timestamp 9", trace: "This is a trace 9"
+        });
+        eventLoop.shift()();
+        eventLoop.shift()();
+        subject.push({
+          logger: "LOGGER0", type: "error", message: "This is a message 0", level: 10, timestamp: "This is a timestamp 0", trace: "This is a trace 0"
         });
 
         // Drain the loop:
@@ -488,34 +488,34 @@ describe("The Manager provider", function() {
         // Test the output:
         assert.equal(results.length, 10, "The Backend was not called exactly ten times");
         assert.deepEqual(results[0], {
-          origin: { app: "APP", logger: "LOGGER" }, type: "log", message: "This is a message", level: 1, trace: "This is a trace", timestamp: "This is a timestamp"
+          app: "APP", logger: "LOGGER", type: "log", message: "This is a message", level: 1, trace: "This is a trace", timestamp: "This is a timestamp"
         }, "The caller failed to provide the correct input for the first call");
         assert.deepEqual(results[1], {
-          origin: { app: "APP", logger: "LOGGER2" }, type: "error", message: "This is a message 2", level: 2, trace: "This is a trace 2", timestamp: "This is a timestamp 2"
+          app: "APP", logger: "LOGGER2", type: "error", message: "This is a message 2", level: 2, trace: "This is a trace 2", timestamp: "This is a timestamp 2"
         }, "The caller failed to provide the correct input for the second call");
         assert.deepEqual(results[2], {
-          origin: { app: "APP", logger: "LOGGER3" }, type: "log", message: "This is a message 3", level: 3, trace: "This is a trace 3", timestamp: "This is a timestamp 3"
+          app: "APP", logger: "LOGGER3", type: "log", message: "This is a message 3", level: 3, trace: "This is a trace 3", timestamp: "This is a timestamp 3"
         }, "The caller failed to provide the correct input for the third call");
         assert.deepEqual(results[3], {
-          origin: { app: "APP", logger: "LOGGER4" }, type: "info", message: "This is a message 4", level: 4, trace: "This is a trace 4", timestamp: "This is a timestamp 4"
+          app: "APP", logger: "LOGGER4", type: "info", message: "This is a message 4", level: 4, trace: "This is a trace 4", timestamp: "This is a timestamp 4"
         }, "The caller failed to provide the correct input for the fourth call");
         assert.deepEqual(results[4], {
-          origin: { app: "APP", logger: "LOGGER5" }, type: "log", message: "This is a message 5", level: 5, trace: "This is a trace 5", timestamp: "This is a timestamp 5"
+          app: "APP", logger: "LOGGER5", type: "log", message: "This is a message 5", level: 5, trace: "This is a trace 5", timestamp: "This is a timestamp 5"
         }, "The caller failed to provide the correct input for the fifth call");
         assert.deepEqual(results[5], {
-          origin: { app: "APP", logger: "LOGGER6" }, type: "warn", message: "This is a message 6", level: 6, trace: "This is a trace 6", timestamp: "This is a timestamp 6"
+          app: "APP", logger: "LOGGER6", type: "warn", message: "This is a message 6", level: 6, trace: "This is a trace 6", timestamp: "This is a timestamp 6"
         }, "The caller failed to provide the correct input for the sixth call");
         assert.deepEqual(results[6], {
-          origin: { app: "APP", logger: "LOGGER7" }, type: "log", message: "This is a message 7", level: 7, trace: "This is a trace 7", timestamp: "This is a timestamp 7"
+          app: "APP", logger: "LOGGER7", type: "log", message: "This is a message 7", level: 7, trace: "This is a trace 7", timestamp: "This is a timestamp 7"
         }, "The caller failed to provide the correct input for the seventh call");
         assert.deepEqual(results[7], {
-          origin: { app: "APP", logger: "LOGGER8" }, type: "info", message: "This is a message 8", level: 8, trace: "This is a trace 8", timestamp: "This is a timestamp 8"
+          app: "APP", logger: "LOGGER8", type: "info", message: "This is a message 8", level: 8, trace: "This is a trace 8", timestamp: "This is a timestamp 8"
         }, "The caller failed to provide the correct input for the eighth call");
         assert.deepEqual(results[8], {
-          origin: { app: "APP", logger: "LOGGER9" }, type: "log", message: "This is a message 9", level: 9, trace: "This is a trace 9", timestamp: "This is a timestamp 9"
+          app: "APP", logger: "LOGGER9", type: "log", message: "This is a message 9", level: 9, trace: "This is a trace 9", timestamp: "This is a timestamp 9"
         }, "The caller failed to provide the correct input for the ninth call");
         assert.deepEqual(results[9], {
-          origin: { app: "APP", logger: "LOGGER0" }, type: "error", message: "This is a message 0", level: 10, trace: "This is a trace 0", timestamp: "This is a timestamp 0"
+          app: "APP", logger: "LOGGER0", type: "error", message: "This is a message 0", level: 10, trace: "This is a trace 0", timestamp: "This is a timestamp 0"
         }, "The caller failed to provide the correct input for the tenth call");
       });
 
@@ -544,16 +544,16 @@ describe("The Manager provider", function() {
 
         // Run the test:
         subject.push({
-          from: "LOGGER", type: "warn", message: "This is a message", level: 1, timestamp: "This is a timestamp", trace: "This is a trace"
+          logger: "LOGGER", type: "warn", message: "This is a message", level: 1, timestamp: "This is a timestamp", trace: "This is a trace"
         });
         subject.push({
-          from: "LOGGER2", type: "error", message: "This is a message 2", level: 2, timestamp: "This is a timestamp 2", trace: "This is a trace 2"
+          logger: "LOGGER2", type: "error", message: "This is a message 2", level: 2, timestamp: "This is a timestamp 2", trace: "This is a trace 2"
         });
         subject.push({
-          from: "LOGGER3", type: "log", message: "This is a message 3", level: 3, timestamp: "This is a timestamp 3", trace: "This is a trace 3"
+          logger: "LOGGER3", type: "log", message: "This is a message 3", level: 3, timestamp: "This is a timestamp 3", trace: "This is a trace 3"
         });
         subject.push({
-          from: "LOGGER4", type: "info", message: "This is a message 4", level: 4, timestamp: "This is a timestamp 4", trace: "This is a trace 4"
+          logger: "LOGGER4", type: "info", message: "This is a message 4", level: 4, timestamp: "This is a timestamp 4", trace: "This is a trace 4"
         });
 
         // Make sure that nothing has happened yet:
@@ -571,16 +571,16 @@ describe("The Manager provider", function() {
         for (let count = 0; count < 10; count++) {
           assert.equal(results[count].length, 4, "Backend #" + count + " was not called exactly four times");
           assert.deepEqual(results[count][0], {
-            origin: { app: "APP", logger: "LOGGER" }, type: "warn", message: "This is a message", level: 1, trace: "This is a trace", timestamp: "This is a timestamp"
+            app: "APP", logger: "LOGGER", type: "warn", message: "This is a message", level: 1, trace: "This is a trace", timestamp: "This is a timestamp"
           }, "The caller failed to provide the correct input for the first call on backend #" + count);
           assert.deepEqual(results[count][1], {
-            origin: { app: "APP", logger: "LOGGER2" }, type: "error", message: "This is a message 2", level: 2, trace: "This is a trace 2", timestamp: "This is a timestamp 2"
+            app: "APP", logger: "LOGGER2", type: "error", message: "This is a message 2", level: 2, trace: "This is a trace 2", timestamp: "This is a timestamp 2"
           }, "The caller failed to provide the correct input for the second call on backend #" + count);
           assert.deepEqual(results[count][2], {
-            origin: { app: "APP", logger: "LOGGER3" }, type: "log", message: "This is a message 3", level: 3, trace: "This is a trace 3", timestamp: "This is a timestamp 3"
+            app: "APP", logger: "LOGGER3", type: "log", message: "This is a message 3", level: 3, trace: "This is a trace 3", timestamp: "This is a timestamp 3"
           }, "The caller failed to provide the correct input for the third call on backend #" + count);
           assert.deepEqual(results[count][3], {
-            origin: { app: "APP", logger: "LOGGER4" }, type: "info", message: "This is a message 4", level: 4, trace: "This is a trace 4", timestamp: "This is a timestamp 4"
+            app: "APP", logger: "LOGGER4", type: "info", message: "This is a message 4", level: 4, trace: "This is a trace 4", timestamp: "This is a timestamp 4"
           }, "The caller failed to provide the correct input for the fourth call on backend #" + count);
         }
       });
@@ -673,34 +673,34 @@ describe("The Manager provider", function() {
         // Run the test:
         subject.group("LOGGER", "myGroup");
         subject.push({
-          from: "LOGGER", type: "log", message: "This is a message", level: 1, timestamp: "This is a timestamp", trace: "This is a trace"
+          logger: "LOGGER", type: "log", message: "This is a message", level: 1, timestamp: "This is a timestamp", trace: "This is a trace"
         });
         subject.push({
-          from: "LOGGER", type: "error", message: "This is a message 2", level: 2, timestamp: "This is a timestamp 2", trace: "This is a trace 2"
+          logger: "LOGGER", type: "error", message: "This is a message 2", level: 2, timestamp: "This is a timestamp 2", trace: "This is a trace 2"
         });
         subject.push({
-          from: "LOGGER", type: "log", message: "This is a message 3", level: 3, timestamp: "This is a timestamp 3", trace: "This is a trace 3"
+          logger: "LOGGER", type: "log", message: "This is a message 3", level: 3, timestamp: "This is a timestamp 3", trace: "This is a trace 3"
         });
         subject.push({
-          from: "LOGGER", type: "info", message: "This is a message 4", level: 4, timestamp: "This is a timestamp 4", trace: "This is a trace 4"
+          logger: "LOGGER", type: "info", message: "This is a message 4", level: 4, timestamp: "This is a timestamp 4", trace: "This is a trace 4"
         });
         subject.push({
-          from: "LOGGER", type: "log", message: "This is a message 5", level: 5, timestamp: "This is a timestamp 5", trace: "This is a trace 5"
+          logger: "LOGGER", type: "log", message: "This is a message 5", level: 5, timestamp: "This is a timestamp 5", trace: "This is a trace 5"
         });
         subject.push({
-          from: "LOGGER", type: "warn", message: "This is a message 6", level: 6, timestamp: "This is a timestamp 6", trace: "This is a trace 6"
+          logger: "LOGGER", type: "warn", message: "This is a message 6", level: 6, timestamp: "This is a timestamp 6", trace: "This is a trace 6"
         });
         subject.push({
-          from: "LOGGER", type: "log", message: "This is a message 7", level: 7, timestamp: "This is a timestamp 7", trace: "This is a trace 7"
+          logger: "LOGGER", type: "log", message: "This is a message 7", level: 7, timestamp: "This is a timestamp 7", trace: "This is a trace 7"
         });
         subject.push({
-          from: "LOGGER", type: "info", message: "This is a message 8", level: 8, timestamp: "This is a timestamp 8", trace: "This is a trace 8"
+          logger: "LOGGER", type: "info", message: "This is a message 8", level: 8, timestamp: "This is a timestamp 8", trace: "This is a trace 8"
         });
         subject.push({
-          from: "LOGGER", type: "log", message: "This is a message 9", level: 9, timestamp: "This is a timestamp 9", trace: "This is a trace 9"
+          logger: "LOGGER", type: "log", message: "This is a message 9", level: 9, timestamp: "This is a timestamp 9", trace: "This is a trace 9"
         });
         subject.push({
-          from: "LOGGER", type: "error", message: "This is a message 0", level: 10, timestamp: "This is a timestamp 0", trace: "This is a trace 0"
+          logger: "LOGGER", type: "error", message: "This is a message 0", level: 10, timestamp: "This is a timestamp 0", trace: "This is a trace 0"
         });
 
         // Break point:
@@ -713,34 +713,34 @@ describe("The Manager provider", function() {
         assert.equal(results.length, 12, "There were not exactly 12 calls made by the subject to the backend");
         assert.deepEqual(results[0], { group: "myGroup" }, "The group was not decalred first or was declared incorrectly");
         assert.deepEqual(results[1], {
-          origin: { app: "APP", logger: "LOGGER" }, type: "log", message: "This is a message", level: 1, trace: "This is a trace", timestamp: "This is a timestamp"
+          app: "APP", logger: "LOGGER", type: "log", message: "This is a message", level: 1, trace: "This is a trace", timestamp: "This is a timestamp"
         }, "The caller failed to provide the correct input for the first call");
         assert.deepEqual(results[2], {
-          origin: { app: "APP", logger: "LOGGER" }, type: "error", message: "This is a message 2", level: 2, trace: "This is a trace 2", timestamp: "This is a timestamp 2"
+          app: "APP", logger: "LOGGER", type: "error", message: "This is a message 2", level: 2, trace: "This is a trace 2", timestamp: "This is a timestamp 2"
         }, "The caller failed to provide the correct input for the second call");
         assert.deepEqual(results[3], {
-          origin: { app: "APP", logger: "LOGGER" }, type: "log", message: "This is a message 3", level: 3, trace: "This is a trace 3", timestamp: "This is a timestamp 3"
+          app: "APP", logger: "LOGGER", type: "log", message: "This is a message 3", level: 3, trace: "This is a trace 3", timestamp: "This is a timestamp 3"
         }, "The caller failed to provide the correct input for the third call");
         assert.deepEqual(results[4], {
-          origin: { app: "APP", logger: "LOGGER" }, type: "info", message: "This is a message 4", level: 4, trace: "This is a trace 4", timestamp: "This is a timestamp 4"
+          app: "APP", logger: "LOGGER", type: "info", message: "This is a message 4", level: 4, trace: "This is a trace 4", timestamp: "This is a timestamp 4"
         }, "The caller failed to provide the correct input for the fourth call");
         assert.deepEqual(results[5], {
-          origin: { app: "APP", logger: "LOGGER" }, type: "log", message: "This is a message 5", level: 5, trace: "This is a trace 5", timestamp: "This is a timestamp 5"
+          app: "APP", logger: "LOGGER", type: "log", message: "This is a message 5", level: 5, trace: "This is a trace 5", timestamp: "This is a timestamp 5"
         }, "The caller failed to provide the correct input for the fifth call");
         assert.deepEqual(results[6], {
-          origin: { app: "APP", logger: "LOGGER" }, type: "warn", message: "This is a message 6", level: 6, trace: "This is a trace 6", timestamp: "This is a timestamp 6"
+          app: "APP", logger: "LOGGER", type: "warn", message: "This is a message 6", level: 6, trace: "This is a trace 6", timestamp: "This is a timestamp 6"
         }, "The caller failed to provide the correct input for the sixth call");
         assert.deepEqual(results[7], {
-          origin: { app: "APP", logger: "LOGGER" }, type: "log", message: "This is a message 7", level: 7, trace: "This is a trace 7", timestamp: "This is a timestamp 7"
+          app: "APP", logger: "LOGGER", type: "log", message: "This is a message 7", level: 7, trace: "This is a trace 7", timestamp: "This is a timestamp 7"
         }, "The caller failed to provide the correct input for the seventh call");
         assert.deepEqual(results[8], {
-          origin: { app: "APP", logger: "LOGGER" }, type: "info", message: "This is a message 8", level: 8, trace: "This is a trace 8", timestamp: "This is a timestamp 8"
+          app: "APP", logger: "LOGGER", type: "info", message: "This is a message 8", level: 8, trace: "This is a trace 8", timestamp: "This is a timestamp 8"
         }, "The caller failed to provide the correct input for the eighth call");
         assert.deepEqual(results[9], {
-          origin: { app: "APP", logger: "LOGGER" }, type: "log", message: "This is a message 9", level: 9, trace: "This is a trace 9", timestamp: "This is a timestamp 9"
+          app: "APP", logger: "LOGGER", type: "log", message: "This is a message 9", level: 9, trace: "This is a trace 9", timestamp: "This is a timestamp 9"
         }, "The caller failed to provide the correct input for the ninth call");
         assert.deepEqual(results[10], {
-          origin: { app: "APP", logger: "LOGGER" }, type: "error", message: "This is a message 0", level: 10, trace: "This is a trace 0", timestamp: "This is a timestamp 0"
+          app: "APP", logger: "LOGGER", type: "error", message: "This is a message 0", level: 10, trace: "This is a trace 0", timestamp: "This is a timestamp 0"
         }, "The caller failed to provide the correct input for the tenth call");
         assert.deepEqual(results[11], { groupEnd: true }, "The \"groupEnd\" call was not declared correctly at the end");
       });
@@ -778,16 +778,16 @@ describe("The Manager provider", function() {
         // Run the test:
         subject.group("LOGGER", "testGroup");
         subject.push({
-          from: "LOGGER", type: "warn", message: "This is a message", level: 1, timestamp: "This is a timestamp", trace: "This is a trace"
+          logger: "LOGGER", type: "warn", message: "This is a message", level: 1, timestamp: "This is a timestamp", trace: "This is a trace"
         });
         subject.push({
-          from: "LOGGER", type: "error", message: "This is a message 2", level: 2, timestamp: "This is a timestamp 2", trace: "This is a trace 2"
+          logger: "LOGGER", type: "error", message: "This is a message 2", level: 2, timestamp: "This is a timestamp 2", trace: "This is a trace 2"
         });
         subject.push({
-          from: "LOGGER", type: "log", message: "This is a message 3", level: 3, timestamp: "This is a timestamp 3", trace: "This is a trace 3"
+          logger: "LOGGER", type: "log", message: "This is a message 3", level: 3, timestamp: "This is a timestamp 3", trace: "This is a trace 3"
         });
         subject.push({
-          from: "LOGGER", type: "info", message: "This is a message 4", level: 4, timestamp: "This is a timestamp 4", trace: "This is a trace 4"
+          logger: "LOGGER", type: "info", message: "This is a message 4", level: 4, timestamp: "This is a timestamp 4", trace: "This is a trace 4"
         });
 
         // Break point:
@@ -802,16 +802,16 @@ describe("The Manager provider", function() {
           assert.equal(results[count].length, 6, "Backend #" + count + " was not called exactly six times");
           assert.deepEqual(results[count][0], { group: "testGroup" }, "The group was not decalred first or was declared incorrectly for backend #" + count);
           assert.deepEqual(results[count][1], {
-            origin: { app: "APP", logger: "LOGGER" }, type: "warn", message: "This is a message", level: 1, trace: "This is a trace", timestamp: "This is a timestamp"
+            app: "APP", logger: "LOGGER", type: "warn", message: "This is a message", level: 1, trace: "This is a trace", timestamp: "This is a timestamp"
           }, "The caller failed to provide the correct input for the first call on backend #" + count);
           assert.deepEqual(results[count][2], {
-            origin: { app: "APP", logger: "LOGGER" }, type: "error", message: "This is a message 2", level: 2, trace: "This is a trace 2", timestamp: "This is a timestamp 2"
+            app: "APP", logger: "LOGGER", type: "error", message: "This is a message 2", level: 2, trace: "This is a trace 2", timestamp: "This is a timestamp 2"
           }, "The caller failed to provide the correct input for the second call on backend #" + count);
           assert.deepEqual(results[count][3], {
-            origin: { app: "APP", logger: "LOGGER" }, type: "log", message: "This is a message 3", level: 3, trace: "This is a trace 3", timestamp: "This is a timestamp 3"
+            app: "APP", logger: "LOGGER", type: "log", message: "This is a message 3", level: 3, trace: "This is a trace 3", timestamp: "This is a timestamp 3"
           }, "The caller failed to provide the correct input for the third call on backend #" + count);
           assert.deepEqual(results[count][4], {
-            origin: { app: "APP", logger: "LOGGER" }, type: "info", message: "This is a message 4", level: 4, trace: "This is a trace 4", timestamp: "This is a timestamp 4"
+            app: "APP", logger: "LOGGER", type: "info", message: "This is a message 4", level: 4, trace: "This is a trace 4", timestamp: "This is a timestamp 4"
           }, "The caller failed to provide the correct input for the fourth call on backend #" + count);
           assert.deepEqual(results[count][5], { groupEnd: true }, "The \"groupEnd\" call was not declared correctly at the end of backend #" + count);
         }
@@ -846,39 +846,39 @@ describe("The Manager provider", function() {
         // Run the test:
         subject.group("LOGGER", "group1");
         subject.push({
-          from: "LOGGER", type: "log", message: "This is a message", level: 1, timestamp: "This is a timestamp", trace: "This is a trace"
+          logger: "LOGGER", type: "log", message: "This is a message", level: 1, timestamp: "This is a timestamp", trace: "This is a trace"
         });
         subject.group("LOGGER", "group2");
         subject.push({
-          from: "LOGGER", type: "error", message: "This is a message 2", level: 2, timestamp: "This is a timestamp 2", trace: "This is a trace 2"
+          logger: "LOGGER", type: "error", message: "This is a message 2", level: 2, timestamp: "This is a timestamp 2", trace: "This is a trace 2"
         });
         subject.group("LOGGER", "group3");
         subject.push({
-          from: "LOGGER", type: "log", message: "This is a message 3", level: 3, timestamp: "This is a timestamp 3", trace: "This is a trace 3"
+          logger: "LOGGER", type: "log", message: "This is a message 3", level: 3, timestamp: "This is a timestamp 3", trace: "This is a trace 3"
         });
         subject.group("LOGGER", "group4");
         subject.push({
-          from: "LOGGER", type: "info", message: "This is a message 4", level: 4, timestamp: "This is a timestamp 4", trace: "This is a trace 4"
+          logger: "LOGGER", type: "info", message: "This is a message 4", level: 4, timestamp: "This is a timestamp 4", trace: "This is a trace 4"
         });
         subject.group("LOGGER", "group5");
         subject.push({
-          from: "LOGGER", type: "log", message: "This is a message 5", level: 5, timestamp: "This is a timestamp 5", trace: "This is a trace 5"
+          logger: "LOGGER", type: "log", message: "This is a message 5", level: 5, timestamp: "This is a timestamp 5", trace: "This is a trace 5"
         });
         subject.groupEnd("LOGGER");
         subject.push({
-          from: "LOGGER", type: "warn", message: "This is a message 6", level: 6, timestamp: "This is a timestamp 6", trace: "This is a trace 6"
+          logger: "LOGGER", type: "warn", message: "This is a message 6", level: 6, timestamp: "This is a timestamp 6", trace: "This is a trace 6"
         });
         subject.groupEnd("LOGGER");
         subject.push({
-          from: "LOGGER", type: "log", message: "This is a message 7", level: 7, timestamp: "This is a timestamp 7", trace: "This is a trace 7"
+          logger: "LOGGER", type: "log", message: "This is a message 7", level: 7, timestamp: "This is a timestamp 7", trace: "This is a trace 7"
         });
         subject.groupEnd("LOGGER");
         subject.push({
-          from: "LOGGER", type: "info", message: "This is a message 8", level: 8, timestamp: "This is a timestamp 8", trace: "This is a trace 8"
+          logger: "LOGGER", type: "info", message: "This is a message 8", level: 8, timestamp: "This is a timestamp 8", trace: "This is a trace 8"
         });
         subject.groupEnd("LOGGER");
         subject.push({
-          from: "LOGGER", type: "log", message: "This is a message 9", level: 9, timestamp: "This is a timestamp 9", trace: "This is a trace 9"
+          logger: "LOGGER", type: "log", message: "This is a message 9", level: 9, timestamp: "This is a timestamp 9", trace: "This is a trace 9"
         });
 
         // Break point:
@@ -891,39 +891,39 @@ describe("The Manager provider", function() {
         assert.equal(results.length, 19, "There were not exactly 12 calls made by the subject to the backend");
         assert.deepEqual(results[0], { group: "group1" }, "group1 was not decalred or was declared incorrectly");
         assert.deepEqual(results[1], {
-          origin: { app: "APP", logger: "LOGGER" }, type: "log", message: "This is a message", level: 1, trace: "This is a trace", timestamp: "This is a timestamp"
+          app: "APP", logger: "LOGGER", type: "log", message: "This is a message", level: 1, trace: "This is a trace", timestamp: "This is a timestamp"
         }, "The caller failed to provide the correct input for the first call");
         assert.deepEqual(results[2], { group: "group2" }, "group2 was not decalred or was declared incorrectly");
         assert.deepEqual(results[3], {
-          origin: { app: "APP", logger: "LOGGER" }, type: "error", message: "This is a message 2", level: 2, trace: "This is a trace 2", timestamp: "This is a timestamp 2"
+          app: "APP", logger: "LOGGER", type: "error", message: "This is a message 2", level: 2, trace: "This is a trace 2", timestamp: "This is a timestamp 2"
         }, "The caller failed to provide the correct input for the second call");
         assert.deepEqual(results[4], { group: "group3" }, "group3 was not decalred or was declared incorrectly");
         assert.deepEqual(results[5], {
-          origin: { app: "APP", logger: "LOGGER" }, type: "log", message: "This is a message 3", level: 3, trace: "This is a trace 3", timestamp: "This is a timestamp 3"
+          app: "APP", logger: "LOGGER", type: "log", message: "This is a message 3", level: 3, trace: "This is a trace 3", timestamp: "This is a timestamp 3"
         }, "The caller failed to provide the correct input for the third call");
         assert.deepEqual(results[6], { group: "group4" }, "group4 was not decalred or was declared incorrectly");
         assert.deepEqual(results[7], {
-          origin: { app: "APP", logger: "LOGGER" }, type: "info", message: "This is a message 4", level: 4, trace: "This is a trace 4", timestamp: "This is a timestamp 4"
+          app: "APP", logger: "LOGGER", type: "info", message: "This is a message 4", level: 4, trace: "This is a trace 4", timestamp: "This is a timestamp 4"
         }, "The caller failed to provide the correct input for the fourth call");
         assert.deepEqual(results[8], { group: "group5" }, "group5 was not decalred or was declared incorrectly");
         assert.deepEqual(results[9], {
-          origin: { app: "APP", logger: "LOGGER" }, type: "log", message: "This is a message 5", level: 5, trace: "This is a trace 5", timestamp: "This is a timestamp 5"
+          app: "APP", logger: "LOGGER", type: "log", message: "This is a message 5", level: 5, trace: "This is a trace 5", timestamp: "This is a timestamp 5"
         }, "The caller failed to provide the correct input for the fifth call");
         assert.deepEqual(results[10], { groupEnd: true }, "The \"groupEnd\" call was not declared correctly at the end of group5");
         assert.deepEqual(results[11], {
-          origin: { app: "APP", logger: "LOGGER" }, type: "warn", message: "This is a message 6", level: 6, trace: "This is a trace 6", timestamp: "This is a timestamp 6"
+          app: "APP", logger: "LOGGER", type: "warn", message: "This is a message 6", level: 6, trace: "This is a trace 6", timestamp: "This is a timestamp 6"
         }, "The caller failed to provide the correct input for the sixth call");
         assert.deepEqual(results[12], { groupEnd: true }, "The \"groupEnd\" call was not declared correctly at the end of group4");
         assert.deepEqual(results[13], {
-          origin: { app: "APP", logger: "LOGGER" }, type: "log", message: "This is a message 7", level: 7, trace: "This is a trace 7", timestamp: "This is a timestamp 7"
+          app: "APP", logger: "LOGGER", type: "log", message: "This is a message 7", level: 7, trace: "This is a trace 7", timestamp: "This is a timestamp 7"
         }, "The caller failed to provide the correct input for the seventh call");
         assert.deepEqual(results[14], { groupEnd: true }, "The \"groupEnd\" call was not declared correctly at the end of group3");
         assert.deepEqual(results[15], {
-          origin: { app: "APP", logger: "LOGGER" }, type: "info", message: "This is a message 8", level: 8, trace: "This is a trace 8", timestamp: "This is a timestamp 8"
+          app: "APP", logger: "LOGGER", type: "info", message: "This is a message 8", level: 8, trace: "This is a trace 8", timestamp: "This is a timestamp 8"
         }, "The caller failed to provide the correct input for the eighth call");
         assert.deepEqual(results[16], { groupEnd: true }, "The \"groupEnd\" call was not declared correctly at the end of group2");
         assert.deepEqual(results[17], {
-          origin: { app: "APP", logger: "LOGGER" }, type: "log", message: "This is a message 9", level: 9, trace: "This is a trace 9", timestamp: "This is a timestamp 9"
+          app: "APP", logger: "LOGGER", type: "log", message: "This is a message 9", level: 9, trace: "This is a trace 9", timestamp: "This is a timestamp 9"
         }, "The caller failed to provide the correct input for the ninth call");
         assert.deepEqual(results[18], { groupEnd: true }, "The \"groupEnd\" call was not declared correctly at the end of group1");
       });
@@ -957,77 +957,77 @@ describe("The Manager provider", function() {
         // Run the test:
         subject.group("LOGGER", "myGroup");
         subject.push({
-          from: "LOGGER2", type: "log", message: "This is a message", level: 1, timestamp: "This is a timestamp", trace: "This is a trace"
+          logger: "LOGGER2", type: "log", message: "This is a message", level: 1, timestamp: "This is a timestamp", trace: "This is a trace"
         });
         subject.push({
-          from: "LOGGER", type: "error", message: "This is a message 2", level: 2, timestamp: "This is a timestamp 2", trace: "This is a trace 2"
+          logger: "LOGGER", type: "error", message: "This is a message 2", level: 2, timestamp: "This is a timestamp 2", trace: "This is a trace 2"
         });
         subject.group("LOGGER3", "myGroup");
         subject.push({
-          from: "LOGGER", type: "log", message: "This is a message 3", level: 3, timestamp: "This is a timestamp 3", trace: "This is a trace 3"
+          logger: "LOGGER", type: "log", message: "This is a message 3", level: 3, timestamp: "This is a timestamp 3", trace: "This is a trace 3"
         });
         subject.push({
-          from: "LOGGER3", type: "info", message: "This is a message 4", level: 4, timestamp: "This is a timestamp 4", trace: "This is a trace 4"
+          logger: "LOGGER3", type: "info", message: "This is a message 4", level: 4, timestamp: "This is a timestamp 4", trace: "This is a trace 4"
         });
         subject.push({
-          from: "LOGGER2", type: "log", message: "This is a message 5", level: 5, timestamp: "This is a timestamp 5", trace: "This is a trace 5"
+          logger: "LOGGER2", type: "log", message: "This is a message 5", level: 5, timestamp: "This is a timestamp 5", trace: "This is a trace 5"
         });
         subject.group("LOGGER2", "otherGroup");
         subject.groupEnd("LOGGER");
         subject.push({
-          from: "LOGGER2", type: "warn", message: "This is a message 6", level: 6, timestamp: "This is a timestamp 6", trace: "This is a trace 6"
+          logger: "LOGGER2", type: "warn", message: "This is a message 6", level: 6, timestamp: "This is a timestamp 6", trace: "This is a trace 6"
         });
         subject.push({
-          from: "LOGGER3", type: "log", message: "This is a message 7", level: 7, timestamp: "This is a timestamp 7", trace: "This is a trace 7"
+          logger: "LOGGER3", type: "log", message: "This is a message 7", level: 7, timestamp: "This is a timestamp 7", trace: "This is a trace 7"
         });
         subject.groupEnd("LOGGER3");
         subject.push({
-          from: "LOGGER", type: "info", message: "This is a message 8", level: 8, timestamp: "This is a timestamp 8", trace: "This is a trace 8"
+          logger: "LOGGER", type: "info", message: "This is a message 8", level: 8, timestamp: "This is a timestamp 8", trace: "This is a trace 8"
         });
         subject.push({
-          from: "LOGGER3", type: "log", message: "This is a message 9", level: 9, timestamp: "This is a timestamp 9", trace: "This is a trace 9"
+          logger: "LOGGER3", type: "log", message: "This is a message 9", level: 9, timestamp: "This is a timestamp 9", trace: "This is a trace 9"
         });
         subject.push({
-          from: "LOGGER2", type: "error", message: "This is a message 0", level: 10, timestamp: "This is a timestamp 0", trace: "This is a trace 0"
+          logger: "LOGGER2", type: "error", message: "This is a message 0", level: 10, timestamp: "This is a timestamp 0", trace: "This is a trace 0"
         });
         subject.groupEnd("LOGGER2");
 
         // Check the results:
         assert.equal(results.length, 16, "There were not exactly 16 calls made by the subject to the backend");
         assert.deepEqual(results[0], {
-          origin: { app: "APP", logger: "LOGGER2" }, type: "log", message: "This is a message", level: 1, trace: "This is a trace", timestamp: "This is a timestamp"
+          app: "APP", logger: "LOGGER2", type: "log", message: "This is a message", level: 1, trace: "This is a trace", timestamp: "This is a timestamp"
         }, "The caller failed to provide the correct input for the first call");
         assert.deepEqual(results[1], {
-          origin: { app: "APP", logger: "LOGGER2" }, type: "log", message: "This is a message 5", level: 5, trace: "This is a trace 5", timestamp: "This is a timestamp 5"
+          app: "APP", logger: "LOGGER2", type: "log", message: "This is a message 5", level: 5, trace: "This is a trace 5", timestamp: "This is a timestamp 5"
         }, "The caller failed to provide the correct input for the fifth call");
         assert.deepEqual(results[2], { group: "myGroup" }, "The LOGGER group was not decalred or was declared incorrectly");
         assert.deepEqual(results[3], {
-          origin: { app: "APP", logger: "LOGGER" }, type: "error", message: "This is a message 2", level: 2, trace: "This is a trace 2", timestamp: "This is a timestamp 2"
+          app: "APP", logger: "LOGGER", type: "error", message: "This is a message 2", level: 2, trace: "This is a trace 2", timestamp: "This is a timestamp 2"
         }, "The caller failed to provide the correct input for the second call");
         assert.deepEqual(results[4], {
-          origin: { app: "APP", logger: "LOGGER" }, type: "log", message: "This is a message 3", level: 3, trace: "This is a trace 3", timestamp: "This is a timestamp 3"
+          app: "APP", logger: "LOGGER", type: "log", message: "This is a message 3", level: 3, trace: "This is a trace 3", timestamp: "This is a timestamp 3"
         }, "The caller failed to provide the correct input for the third call");
         assert.deepEqual(results[5], { groupEnd: true }, "The \"groupEnd\" call was not declared correctly at the end");
         assert.deepEqual(results[6], { group: "myGroup" }, "The LOGGER3 group was not decalred first or was declared incorrectly");
         assert.deepEqual(results[7], {
-          origin: { app: "APP", logger: "LOGGER3" }, type: "info", message: "This is a message 4", level: 4, trace: "This is a trace 4", timestamp: "This is a timestamp 4"
+          app: "APP", logger: "LOGGER3", type: "info", message: "This is a message 4", level: 4, trace: "This is a trace 4", timestamp: "This is a timestamp 4"
         }, "The caller failed to provide the correct input for the fourth call");
         assert.deepEqual(results[8], {
-          origin: { app: "APP", logger: "LOGGER3" }, type: "log", message: "This is a message 7", level: 7, trace: "This is a trace 7", timestamp: "This is a timestamp 7"
+          app: "APP", logger: "LOGGER3", type: "log", message: "This is a message 7", level: 7, trace: "This is a trace 7", timestamp: "This is a timestamp 7"
         }, "The caller failed to provide the correct input for the seventh call");
         assert.deepEqual(results[9], { groupEnd: true }, "The \"groupEnd\" call was not declared correctly at the end");
         assert.deepEqual(results[10], {
-          origin: { app: "APP", logger: "LOGGER" }, type: "info", message: "This is a message 8", level: 8, trace: "This is a trace 8", timestamp: "This is a timestamp 8"
+          app: "APP", logger: "LOGGER", type: "info", message: "This is a message 8", level: 8, trace: "This is a trace 8", timestamp: "This is a timestamp 8"
         }, "The caller failed to provide the correct input for the eighth call");
         assert.deepEqual(results[11], {
-          origin: { app: "APP", logger: "LOGGER3" }, type: "log", message: "This is a message 9", level: 9, trace: "This is a trace 9", timestamp: "This is a timestamp 9"
+          app: "APP", logger: "LOGGER3", type: "log", message: "This is a message 9", level: 9, trace: "This is a trace 9", timestamp: "This is a timestamp 9"
         }, "The caller failed to provide the correct input for the ninth call");
         assert.deepEqual(results[12], { group: "otherGroup" }, "The LOGGER2 group was not decalred first or was declared incorrectly");
         assert.deepEqual(results[13], {
-          origin: { app: "APP", logger: "LOGGER2" }, type: "warn", message: "This is a message 6", level: 6, trace: "This is a trace 6", timestamp: "This is a timestamp 6"
+          app: "APP", logger: "LOGGER2", type: "warn", message: "This is a message 6", level: 6, trace: "This is a trace 6", timestamp: "This is a timestamp 6"
         }, "The caller failed to provide the correct input for the sixth call");
         assert.deepEqual(results[14], {
-          origin: { app: "APP", logger: "LOGGER2" }, type: "error", message: "This is a message 0", level: 10, trace: "This is a trace 0", timestamp: "This is a timestamp 0"
+          app: "APP", logger: "LOGGER2", type: "error", message: "This is a message 0", level: 10, trace: "This is a trace 0", timestamp: "This is a timestamp 0"
         }, "The caller failed to provide the correct input for the tenth call");
         assert.deepEqual(results[15], { groupEnd: true }, "The \"groupEnd\" call was not declared correctly at the end");
       });
@@ -1116,34 +1116,34 @@ describe("The Manager provider", function() {
         // Run the test:
         subject.group("LOGGER", "myGroup");
         subject.push({
-          from: "LOGGER", type: "log", message: "This is a message", level: 1, timestamp: "This is a timestamp", trace: "This is a trace"
+          logger: "LOGGER", type: "log", message: "This is a message", level: 1, timestamp: "This is a timestamp", trace: "This is a trace"
         });
         subject.push({
-          from: "LOGGER", type: "error", message: "This is a message 2", level: 2, timestamp: "This is a timestamp 2", trace: "This is a trace 2"
+          logger: "LOGGER", type: "error", message: "This is a message 2", level: 2, timestamp: "This is a timestamp 2", trace: "This is a trace 2"
         });
         subject.push({
-          from: "LOGGER", type: "log", message: "This is a message 3", level: 3, timestamp: "This is a timestamp 3", trace: "This is a trace 3"
+          logger: "LOGGER", type: "log", message: "This is a message 3", level: 3, timestamp: "This is a timestamp 3", trace: "This is a trace 3"
         });
         subject.push({
-          from: "LOGGER", type: "info", message: "This is a message 4", level: 4, timestamp: "This is a timestamp 4", trace: "This is a trace 4"
+          logger: "LOGGER", type: "info", message: "This is a message 4", level: 4, timestamp: "This is a timestamp 4", trace: "This is a trace 4"
         });
         subject.push({
-          from: "LOGGER", type: "log", message: "This is a message 5", level: 5, timestamp: "This is a timestamp 5", trace: "This is a trace 5"
+          logger: "LOGGER", type: "log", message: "This is a message 5", level: 5, timestamp: "This is a timestamp 5", trace: "This is a trace 5"
         });
         subject.push({
-          from: "LOGGER", type: "warn", message: "This is a message 6", level: 6, timestamp: "This is a timestamp 6", trace: "This is a trace 6"
+          logger: "LOGGER", type: "warn", message: "This is a message 6", level: 6, timestamp: "This is a timestamp 6", trace: "This is a trace 6"
         });
         subject.push({
-          from: "LOGGER", type: "log", message: "This is a message 7", level: 7, timestamp: "This is a timestamp 7", trace: "This is a trace 7"
+          logger: "LOGGER", type: "log", message: "This is a message 7", level: 7, timestamp: "This is a timestamp 7", trace: "This is a trace 7"
         });
         subject.push({
-          from: "LOGGER", type: "info", message: "This is a message 8", level: 8, timestamp: "This is a timestamp 8", trace: "This is a trace 8"
+          logger: "LOGGER", type: "info", message: "This is a message 8", level: 8, timestamp: "This is a timestamp 8", trace: "This is a trace 8"
         });
         subject.push({
-          from: "LOGGER", type: "log", message: "This is a message 9", level: 9, timestamp: "This is a timestamp 9", trace: "This is a trace 9"
+          logger: "LOGGER", type: "log", message: "This is a message 9", level: 9, timestamp: "This is a timestamp 9", trace: "This is a trace 9"
         });
         subject.push({
-          from: "LOGGER", type: "error", message: "This is a message 0", level: 10, timestamp: "This is a timestamp 0", trace: "This is a trace 0"
+          logger: "LOGGER", type: "error", message: "This is a message 0", level: 10, timestamp: "This is a timestamp 0", trace: "This is a trace 0"
         });
 
         // Break point:
@@ -1166,34 +1166,34 @@ describe("The Manager provider", function() {
         assert.equal(results.length, 12, "There were not exactly 12 calls made by the subject to the backend");
         assert.deepEqual(results[0], { group: "myGroup" }, "The group was not decalred first or was declared incorrectly");
         assert.deepEqual(results[1], {
-          origin: { app: "APP", logger: "LOGGER" }, type: "log", message: "This is a message", level: 1, trace: "This is a trace", timestamp: "This is a timestamp"
+          app: "APP", logger: "LOGGER", type: "log", message: "This is a message", level: 1, trace: "This is a trace", timestamp: "This is a timestamp"
         }, "The caller failed to provide the correct input for the first call");
         assert.deepEqual(results[2], {
-          origin: { app: "APP", logger: "LOGGER" }, type: "error", message: "This is a message 2", level: 2, trace: "This is a trace 2", timestamp: "This is a timestamp 2"
+          app: "APP", logger: "LOGGER", type: "error", message: "This is a message 2", level: 2, trace: "This is a trace 2", timestamp: "This is a timestamp 2"
         }, "The caller failed to provide the correct input for the second call");
         assert.deepEqual(results[3], {
-          origin: { app: "APP", logger: "LOGGER" }, type: "log", message: "This is a message 3", level: 3, trace: "This is a trace 3", timestamp: "This is a timestamp 3"
+          app: "APP", logger: "LOGGER", type: "log", message: "This is a message 3", level: 3, trace: "This is a trace 3", timestamp: "This is a timestamp 3"
         }, "The caller failed to provide the correct input for the third call");
         assert.deepEqual(results[4], {
-          origin: { app: "APP", logger: "LOGGER" }, type: "info", message: "This is a message 4", level: 4, trace: "This is a trace 4", timestamp: "This is a timestamp 4"
+          app: "APP", logger: "LOGGER", type: "info", message: "This is a message 4", level: 4, trace: "This is a trace 4", timestamp: "This is a timestamp 4"
         }, "The caller failed to provide the correct input for the fourth call");
         assert.deepEqual(results[5], {
-          origin: { app: "APP", logger: "LOGGER" }, type: "log", message: "This is a message 5", level: 5, trace: "This is a trace 5", timestamp: "This is a timestamp 5"
+          app: "APP", logger: "LOGGER", type: "log", message: "This is a message 5", level: 5, trace: "This is a trace 5", timestamp: "This is a timestamp 5"
         }, "The caller failed to provide the correct input for the fifth call");
         assert.deepEqual(results[6], {
-          origin: { app: "APP", logger: "LOGGER" }, type: "warn", message: "This is a message 6", level: 6, trace: "This is a trace 6", timestamp: "This is a timestamp 6"
+          app: "APP", logger: "LOGGER", type: "warn", message: "This is a message 6", level: 6, trace: "This is a trace 6", timestamp: "This is a timestamp 6"
         }, "The caller failed to provide the correct input for the sixth call");
         assert.deepEqual(results[7], {
-          origin: { app: "APP", logger: "LOGGER" }, type: "log", message: "This is a message 7", level: 7, trace: "This is a trace 7", timestamp: "This is a timestamp 7"
+          app: "APP", logger: "LOGGER", type: "log", message: "This is a message 7", level: 7, trace: "This is a trace 7", timestamp: "This is a timestamp 7"
         }, "The caller failed to provide the correct input for the seventh call");
         assert.deepEqual(results[8], {
-          origin: { app: "APP", logger: "LOGGER" }, type: "info", message: "This is a message 8", level: 8, trace: "This is a trace 8", timestamp: "This is a timestamp 8"
+          app: "APP", logger: "LOGGER", type: "info", message: "This is a message 8", level: 8, trace: "This is a trace 8", timestamp: "This is a timestamp 8"
         }, "The caller failed to provide the correct input for the eighth call");
         assert.deepEqual(results[9], {
-          origin: { app: "APP", logger: "LOGGER" }, type: "log", message: "This is a message 9", level: 9, trace: "This is a trace 9", timestamp: "This is a timestamp 9"
+          app: "APP", logger: "LOGGER", type: "log", message: "This is a message 9", level: 9, trace: "This is a trace 9", timestamp: "This is a timestamp 9"
         }, "The caller failed to provide the correct input for the ninth call");
         assert.deepEqual(results[10], {
-          origin: { app: "APP", logger: "LOGGER" }, type: "error", message: "This is a message 0", level: 10, trace: "This is a trace 0", timestamp: "This is a timestamp 0"
+          app: "APP", logger: "LOGGER", type: "error", message: "This is a message 0", level: 10, trace: "This is a trace 0", timestamp: "This is a timestamp 0"
         }, "The caller failed to provide the correct input for the tenth call");
         assert.deepEqual(results[11], { groupEnd: true }, "The \"groupEnd\" call was not declared correctly at the end");
       });
@@ -1232,16 +1232,16 @@ describe("The Manager provider", function() {
         // Run the test:
         subject.group("LOGGER", "testGroup");
         subject.push({
-          from: "LOGGER", type: "warn", message: "This is a message", level: 1, timestamp: "This is a timestamp", trace: "This is a trace"
+          logger: "LOGGER", type: "warn", message: "This is a message", level: 1, timestamp: "This is a timestamp", trace: "This is a trace"
         });
         subject.push({
-          from: "LOGGER", type: "error", message: "This is a message 2", level: 2, timestamp: "This is a timestamp 2", trace: "This is a trace 2"
+          logger: "LOGGER", type: "error", message: "This is a message 2", level: 2, timestamp: "This is a timestamp 2", trace: "This is a trace 2"
         });
         subject.push({
-          from: "LOGGER", type: "log", message: "This is a message 3", level: 3, timestamp: "This is a timestamp 3", trace: "This is a trace 3"
+          logger: "LOGGER", type: "log", message: "This is a message 3", level: 3, timestamp: "This is a timestamp 3", trace: "This is a trace 3"
         });
         subject.push({
-          from: "LOGGER", type: "info", message: "This is a message 4", level: 4, timestamp: "This is a timestamp 4", trace: "This is a trace 4"
+          logger: "LOGGER", type: "info", message: "This is a message 4", level: 4, timestamp: "This is a timestamp 4", trace: "This is a trace 4"
         });
 
         // Break point:
@@ -1267,16 +1267,16 @@ describe("The Manager provider", function() {
           assert.equal(results[count].length, 6, "Backend #" + count + " was not called exactly six times");
           assert.deepEqual(results[count][0], { group: "testGroup" }, "The group was not decalred first or was declared incorrectly for backend #" + count);
           assert.deepEqual(results[count][1], {
-            origin: { app: "APP", logger: "LOGGER" }, type: "warn", message: "This is a message", level: 1, trace: "This is a trace", timestamp: "This is a timestamp"
+            app: "APP", logger: "LOGGER", type: "warn", message: "This is a message", level: 1, trace: "This is a trace", timestamp: "This is a timestamp"
           }, "The caller failed to provide the correct input for the first call on backend #" + count);
           assert.deepEqual(results[count][2], {
-            origin: { app: "APP", logger: "LOGGER" }, type: "error", message: "This is a message 2", level: 2, trace: "This is a trace 2", timestamp: "This is a timestamp 2"
+            app: "APP", logger: "LOGGER", type: "error", message: "This is a message 2", level: 2, trace: "This is a trace 2", timestamp: "This is a timestamp 2"
           }, "The caller failed to provide the correct input for the second call on backend #" + count);
           assert.deepEqual(results[count][3], {
-            origin: { app: "APP", logger: "LOGGER" }, type: "log", message: "This is a message 3", level: 3, trace: "This is a trace 3", timestamp: "This is a timestamp 3"
+            app: "APP", logger: "LOGGER", type: "log", message: "This is a message 3", level: 3, trace: "This is a trace 3", timestamp: "This is a timestamp 3"
           }, "The caller failed to provide the correct input for the third call on backend #" + count);
           assert.deepEqual(results[count][4], {
-            origin: { app: "APP", logger: "LOGGER" }, type: "info", message: "This is a message 4", level: 4, trace: "This is a trace 4", timestamp: "This is a timestamp 4"
+            app: "APP", logger: "LOGGER", type: "info", message: "This is a message 4", level: 4, trace: "This is a trace 4", timestamp: "This is a timestamp 4"
           }, "The caller failed to provide the correct input for the fourth call on backend #" + count);
           assert.deepEqual(results[count][5], { groupEnd: true }, "The \"groupEnd\" call was not declared correctly at the end of backend #" + count);
         }
@@ -1312,39 +1312,39 @@ describe("The Manager provider", function() {
         // Run the test:
         subject.group("LOGGER", "group1");
         subject.push({
-          from: "LOGGER", type: "log", message: "This is a message", level: 1, timestamp: "This is a timestamp", trace: "This is a trace"
+          logger: "LOGGER", type: "log", message: "This is a message", level: 1, timestamp: "This is a timestamp", trace: "This is a trace"
         });
         subject.group("LOGGER", "group2");
         subject.push({
-          from: "LOGGER", type: "error", message: "This is a message 2", level: 2, timestamp: "This is a timestamp 2", trace: "This is a trace 2"
+          logger: "LOGGER", type: "error", message: "This is a message 2", level: 2, timestamp: "This is a timestamp 2", trace: "This is a trace 2"
         });
         subject.group("LOGGER", "group3");
         subject.push({
-          from: "LOGGER", type: "log", message: "This is a message 3", level: 3, timestamp: "This is a timestamp 3", trace: "This is a trace 3"
+          logger: "LOGGER", type: "log", message: "This is a message 3", level: 3, timestamp: "This is a timestamp 3", trace: "This is a trace 3"
         });
         subject.group("LOGGER", "group4");
         subject.push({
-          from: "LOGGER", type: "info", message: "This is a message 4", level: 4, timestamp: "This is a timestamp 4", trace: "This is a trace 4"
+          logger: "LOGGER", type: "info", message: "This is a message 4", level: 4, timestamp: "This is a timestamp 4", trace: "This is a trace 4"
         });
         subject.group("LOGGER", "group5");
         subject.push({
-          from: "LOGGER", type: "log", message: "This is a message 5", level: 5, timestamp: "This is a timestamp 5", trace: "This is a trace 5"
+          logger: "LOGGER", type: "log", message: "This is a message 5", level: 5, timestamp: "This is a timestamp 5", trace: "This is a trace 5"
         });
         subject.groupEnd("LOGGER");
         subject.push({
-          from: "LOGGER", type: "warn", message: "This is a message 6", level: 6, timestamp: "This is a timestamp 6", trace: "This is a trace 6"
+          logger: "LOGGER", type: "warn", message: "This is a message 6", level: 6, timestamp: "This is a timestamp 6", trace: "This is a trace 6"
         });
         subject.groupEnd("LOGGER");
         subject.push({
-          from: "LOGGER", type: "log", message: "This is a message 7", level: 7, timestamp: "This is a timestamp 7", trace: "This is a trace 7"
+          logger: "LOGGER", type: "log", message: "This is a message 7", level: 7, timestamp: "This is a timestamp 7", trace: "This is a trace 7"
         });
         subject.groupEnd("LOGGER");
         subject.push({
-          from: "LOGGER", type: "info", message: "This is a message 8", level: 8, timestamp: "This is a timestamp 8", trace: "This is a trace 8"
+          logger: "LOGGER", type: "info", message: "This is a message 8", level: 8, timestamp: "This is a timestamp 8", trace: "This is a trace 8"
         });
         subject.groupEnd("LOGGER");
         subject.push({
-          from: "LOGGER", type: "log", message: "This is a message 9", level: 9, timestamp: "This is a timestamp 9", trace: "This is a trace 9"
+          logger: "LOGGER", type: "log", message: "This is a message 9", level: 9, timestamp: "This is a timestamp 9", trace: "This is a trace 9"
         });
 
         // Break point:
@@ -1367,39 +1367,39 @@ describe("The Manager provider", function() {
         assert.equal(results.length, 19, "There were not exactly 12 calls made by the subject to the backend");
         assert.deepEqual(results[0], { group: "group1" }, "group1 was not decalred or was declared incorrectly");
         assert.deepEqual(results[1], {
-          origin: { app: "APP", logger: "LOGGER" }, type: "log", message: "This is a message", level: 1, trace: "This is a trace", timestamp: "This is a timestamp"
+          app: "APP", logger: "LOGGER", type: "log", message: "This is a message", level: 1, trace: "This is a trace", timestamp: "This is a timestamp"
         }, "The caller failed to provide the correct input for the first call");
         assert.deepEqual(results[2], { group: "group2" }, "group2 was not decalred or was declared incorrectly");
         assert.deepEqual(results[3], {
-          origin: { app: "APP", logger: "LOGGER" }, type: "error", message: "This is a message 2", level: 2, trace: "This is a trace 2", timestamp: "This is a timestamp 2"
+          app: "APP", logger: "LOGGER", type: "error", message: "This is a message 2", level: 2, trace: "This is a trace 2", timestamp: "This is a timestamp 2"
         }, "The caller failed to provide the correct input for the second call");
         assert.deepEqual(results[4], { group: "group3" }, "group3 was not decalred or was declared incorrectly");
         assert.deepEqual(results[5], {
-          origin: { app: "APP", logger: "LOGGER" }, type: "log", message: "This is a message 3", level: 3, trace: "This is a trace 3", timestamp: "This is a timestamp 3"
+          app: "APP", logger: "LOGGER", type: "log", message: "This is a message 3", level: 3, trace: "This is a trace 3", timestamp: "This is a timestamp 3"
         }, "The caller failed to provide the correct input for the third call");
         assert.deepEqual(results[6], { group: "group4" }, "group4 was not decalred or was declared incorrectly");
         assert.deepEqual(results[7], {
-          origin: { app: "APP", logger: "LOGGER" }, type: "info", message: "This is a message 4", level: 4, trace: "This is a trace 4", timestamp: "This is a timestamp 4"
+          app: "APP", logger: "LOGGER", type: "info", message: "This is a message 4", level: 4, trace: "This is a trace 4", timestamp: "This is a timestamp 4"
         }, "The caller failed to provide the correct input for the fourth call");
         assert.deepEqual(results[8], { group: "group5" }, "group5 was not decalred or was declared incorrectly");
         assert.deepEqual(results[9], {
-          origin: { app: "APP", logger: "LOGGER" }, type: "log", message: "This is a message 5", level: 5, trace: "This is a trace 5", timestamp: "This is a timestamp 5"
+          app: "APP", logger: "LOGGER", type: "log", message: "This is a message 5", level: 5, trace: "This is a trace 5", timestamp: "This is a timestamp 5"
         }, "The caller failed to provide the correct input for the fifth call");
         assert.deepEqual(results[10], { groupEnd: true }, "The \"groupEnd\" call was not declared correctly at the end of group5");
         assert.deepEqual(results[11], {
-          origin: { app: "APP", logger: "LOGGER" }, type: "warn", message: "This is a message 6", level: 6, trace: "This is a trace 6", timestamp: "This is a timestamp 6"
+          app: "APP", logger: "LOGGER", type: "warn", message: "This is a message 6", level: 6, trace: "This is a trace 6", timestamp: "This is a timestamp 6"
         }, "The caller failed to provide the correct input for the sixth call");
         assert.deepEqual(results[12], { groupEnd: true }, "The \"groupEnd\" call was not declared correctly at the end of group4");
         assert.deepEqual(results[13], {
-          origin: { app: "APP", logger: "LOGGER" }, type: "log", message: "This is a message 7", level: 7, trace: "This is a trace 7", timestamp: "This is a timestamp 7"
+          app: "APP", logger: "LOGGER", type: "log", message: "This is a message 7", level: 7, trace: "This is a trace 7", timestamp: "This is a timestamp 7"
         }, "The caller failed to provide the correct input for the seventh call");
         assert.deepEqual(results[14], { groupEnd: true }, "The \"groupEnd\" call was not declared correctly at the end of group3");
         assert.deepEqual(results[15], {
-          origin: { app: "APP", logger: "LOGGER" }, type: "info", message: "This is a message 8", level: 8, trace: "This is a trace 8", timestamp: "This is a timestamp 8"
+          app: "APP", logger: "LOGGER", type: "info", message: "This is a message 8", level: 8, trace: "This is a trace 8", timestamp: "This is a timestamp 8"
         }, "The caller failed to provide the correct input for the eighth call");
         assert.deepEqual(results[16], { groupEnd: true }, "The \"groupEnd\" call was not declared correctly at the end of group2");
         assert.deepEqual(results[17], {
-          origin: { app: "APP", logger: "LOGGER" }, type: "log", message: "This is a message 9", level: 9, trace: "This is a trace 9", timestamp: "This is a timestamp 9"
+          app: "APP", logger: "LOGGER", type: "log", message: "This is a message 9", level: 9, trace: "This is a trace 9", timestamp: "This is a timestamp 9"
         }, "The caller failed to provide the correct input for the ninth call");
         assert.deepEqual(results[18], { groupEnd: true }, "The \"groupEnd\" call was not declared correctly at the end of group1");
       });
@@ -1434,38 +1434,38 @@ describe("The Manager provider", function() {
         // Run the test:
         subject.group("LOGGER", "myGroup");
         subject.push({
-          from: "LOGGER2", type: "log", message: "This is a message", level: 1, timestamp: "This is a timestamp", trace: "This is a trace"
+          logger: "LOGGER2", type: "log", message: "This is a message", level: 1, timestamp: "This is a timestamp", trace: "This is a trace"
         });
         subject.push({
-          from: "LOGGER", type: "error", message: "This is a message 2", level: 2, timestamp: "This is a timestamp 2", trace: "This is a trace 2"
+          logger: "LOGGER", type: "error", message: "This is a message 2", level: 2, timestamp: "This is a timestamp 2", trace: "This is a trace 2"
         });
         subject.group("LOGGER3", "myGroup");
         subject.push({
-          from: "LOGGER", type: "log", message: "This is a message 3", level: 3, timestamp: "This is a timestamp 3", trace: "This is a trace 3"
+          logger: "LOGGER", type: "log", message: "This is a message 3", level: 3, timestamp: "This is a timestamp 3", trace: "This is a trace 3"
         });
         subject.push({
-          from: "LOGGER3", type: "info", message: "This is a message 4", level: 4, timestamp: "This is a timestamp 4", trace: "This is a trace 4"
+          logger: "LOGGER3", type: "info", message: "This is a message 4", level: 4, timestamp: "This is a timestamp 4", trace: "This is a trace 4"
         });
         subject.push({
-          from: "LOGGER2", type: "log", message: "This is a message 5", level: 5, timestamp: "This is a timestamp 5", trace: "This is a trace 5"
+          logger: "LOGGER2", type: "log", message: "This is a message 5", level: 5, timestamp: "This is a timestamp 5", trace: "This is a trace 5"
         });
         subject.group("LOGGER2", "otherGroup");
         subject.groupEnd("LOGGER");
         subject.push({
-          from: "LOGGER2", type: "warn", message: "This is a message 6", level: 6, timestamp: "This is a timestamp 6", trace: "This is a trace 6"
+          logger: "LOGGER2", type: "warn", message: "This is a message 6", level: 6, timestamp: "This is a timestamp 6", trace: "This is a trace 6"
         });
         subject.push({
-          from: "LOGGER3", type: "log", message: "This is a message 7", level: 7, timestamp: "This is a timestamp 7", trace: "This is a trace 7"
+          logger: "LOGGER3", type: "log", message: "This is a message 7", level: 7, timestamp: "This is a timestamp 7", trace: "This is a trace 7"
         });
         subject.groupEnd("LOGGER3");
         subject.push({
-          from: "LOGGER", type: "info", message: "This is a message 8", level: 8, timestamp: "This is a timestamp 8", trace: "This is a trace 8"
+          logger: "LOGGER", type: "info", message: "This is a message 8", level: 8, timestamp: "This is a timestamp 8", trace: "This is a trace 8"
         });
         subject.push({
-          from: "LOGGER3", type: "log", message: "This is a message 9", level: 9, timestamp: "This is a timestamp 9", trace: "This is a trace 9"
+          logger: "LOGGER3", type: "log", message: "This is a message 9", level: 9, timestamp: "This is a timestamp 9", trace: "This is a trace 9"
         });
         subject.push({
-          from: "LOGGER2", type: "error", message: "This is a message 0", level: 10, timestamp: "This is a timestamp 0", trace: "This is a trace 0"
+          logger: "LOGGER2", type: "error", message: "This is a message 0", level: 10, timestamp: "This is a timestamp 0", trace: "This is a trace 0"
         });
         subject.groupEnd("LOGGER2");
 
@@ -1481,39 +1481,39 @@ describe("The Manager provider", function() {
         // Check the results:
         assert.equal(results.length, 16, "There were not exactly 16 calls made by the subject to the backend");
         assert.deepEqual(results[0], {
-          origin: { app: "APP", logger: "LOGGER2" }, type: "log", message: "This is a message", level: 1, trace: "This is a trace", timestamp: "This is a timestamp"
+          app: "APP", logger: "LOGGER2", type: "log", message: "This is a message", level: 1, trace: "This is a trace", timestamp: "This is a timestamp"
         }, "The caller failed to provide the correct input for the first call");
         assert.deepEqual(results[1], {
-          origin: { app: "APP", logger: "LOGGER2" }, type: "log", message: "This is a message 5", level: 5, trace: "This is a trace 5", timestamp: "This is a timestamp 5"
+          app: "APP", logger: "LOGGER2", type: "log", message: "This is a message 5", level: 5, trace: "This is a trace 5", timestamp: "This is a timestamp 5"
         }, "The caller failed to provide the correct input for the fifth call");
         assert.deepEqual(results[2], { group: "myGroup" }, "The LOGGER group was not decalred or was declared incorrectly");
         assert.deepEqual(results[3], {
-          origin: { app: "APP", logger: "LOGGER" }, type: "error", message: "This is a message 2", level: 2, trace: "This is a trace 2", timestamp: "This is a timestamp 2"
+          app: "APP", logger: "LOGGER", type: "error", message: "This is a message 2", level: 2, trace: "This is a trace 2", timestamp: "This is a timestamp 2"
         }, "The caller failed to provide the correct input for the second call");
         assert.deepEqual(results[4], {
-          origin: { app: "APP", logger: "LOGGER" }, type: "log", message: "This is a message 3", level: 3, trace: "This is a trace 3", timestamp: "This is a timestamp 3"
+          app: "APP", logger: "LOGGER", type: "log", message: "This is a message 3", level: 3, trace: "This is a trace 3", timestamp: "This is a timestamp 3"
         }, "The caller failed to provide the correct input for the third call");
         assert.deepEqual(results[5], { groupEnd: true }, "The \"groupEnd\" call was not declared correctly at the end");
         assert.deepEqual(results[6], { group: "myGroup" }, "The LOGGER3 group was not decalred first or was declared incorrectly");
         assert.deepEqual(results[7], {
-          origin: { app: "APP", logger: "LOGGER3" }, type: "info", message: "This is a message 4", level: 4, trace: "This is a trace 4", timestamp: "This is a timestamp 4"
+          app: "APP", logger: "LOGGER3", type: "info", message: "This is a message 4", level: 4, trace: "This is a trace 4", timestamp: "This is a timestamp 4"
         }, "The caller failed to provide the correct input for the fourth call");
         assert.deepEqual(results[8], {
-          origin: { app: "APP", logger: "LOGGER3" }, type: "log", message: "This is a message 7", level: 7, trace: "This is a trace 7", timestamp: "This is a timestamp 7"
+          app: "APP", logger: "LOGGER3", type: "log", message: "This is a message 7", level: 7, trace: "This is a trace 7", timestamp: "This is a timestamp 7"
         }, "The caller failed to provide the correct input for the seventh call");
         assert.deepEqual(results[9], { groupEnd: true }, "The \"groupEnd\" call was not declared correctly at the end");
         assert.deepEqual(results[10], {
-          origin: { app: "APP", logger: "LOGGER" }, type: "info", message: "This is a message 8", level: 8, trace: "This is a trace 8", timestamp: "This is a timestamp 8"
+          app: "APP", logger: "LOGGER", type: "info", message: "This is a message 8", level: 8, trace: "This is a trace 8", timestamp: "This is a timestamp 8"
         }, "The caller failed to provide the correct input for the eighth call");
         assert.deepEqual(results[11], {
-          origin: { app: "APP", logger: "LOGGER3" }, type: "log", message: "This is a message 9", level: 9, trace: "This is a trace 9", timestamp: "This is a timestamp 9"
+          app: "APP", logger: "LOGGER3", type: "log", message: "This is a message 9", level: 9, trace: "This is a trace 9", timestamp: "This is a timestamp 9"
         }, "The caller failed to provide the correct input for the ninth call");
         assert.deepEqual(results[12], { group: "otherGroup" }, "The LOGGER2 group was not decalred first or was declared incorrectly");
         assert.deepEqual(results[13], {
-          origin: { app: "APP", logger: "LOGGER2" }, type: "warn", message: "This is a message 6", level: 6, trace: "This is a trace 6", timestamp: "This is a timestamp 6"
+          app: "APP", logger: "LOGGER2", type: "warn", message: "This is a message 6", level: 6, trace: "This is a trace 6", timestamp: "This is a timestamp 6"
         }, "The caller failed to provide the correct input for the sixth call");
         assert.deepEqual(results[14], {
-          origin: { app: "APP", logger: "LOGGER2" }, type: "error", message: "This is a message 0", level: 10, trace: "This is a trace 0", timestamp: "This is a timestamp 0"
+          app: "APP", logger: "LOGGER2", type: "error", message: "This is a message 0", level: 10, trace: "This is a trace 0", timestamp: "This is a timestamp 0"
         }, "The caller failed to provide the correct input for the tenth call");
         assert.deepEqual(results[15], { groupEnd: true }, "The \"groupEnd\" call was not declared correctly at the end");
       });

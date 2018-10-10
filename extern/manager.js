@@ -45,7 +45,7 @@ var ManagerEntry = function() {};
 /**
 * @type {!string}
 */
-ManagerEntry.prototype.from;
+ManagerEntry.prototype.logger;
 
 /**
 * @type {!string}

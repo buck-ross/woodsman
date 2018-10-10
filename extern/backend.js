@@ -22,41 +22,14 @@
 /**
 * Define a type of object to represent a single entry within the logging system.
 * @record
+* @extends ManagerEntry
 */
 var BackendEntry = function() {};
 
-// Define all of the common, mandatory fields:
-/**
-* @type {!{app: !string, logger: !string}}
-*/
-BackendEntry.prototype.origin;
-
 /**
 * @type {!string}
 */
-BackendEntry.prototype.type;
-
-/**
-* @type {!string}
-*/
-BackendEntry.prototype.message;
-
-/**
-* @type {!number}
-*/
-BackendEntry.prototype.level;
-
-// Define all fields which are generally optional and depend on platform and configuration:
-/**
-* @type {(undefined|string)}
-*/
-BackendEntry.prototype.trace;
-
-/**
-* @type {(undefined|number)}
-*/
-BackendEntry.prototype.timestamp;
-
+BackendEntry.prototype.app;
 
 /**
 * The interface exposed by all `Backend` objects to allow them to interact properly with the `Manager`s.
