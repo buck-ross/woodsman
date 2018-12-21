@@ -124,14 +124,14 @@ The `Console` is about as simple as it gets. It just takes output from *Woodsman
 
 ## Interacting with our Community
 Welcome to the *Woodsman* Community! We're happy you're here! We're doing our best to make *Woodsman* be the perfect logging API that you always wanted, but before you reach out to us with your questions or complaints, please be sure to read through the following documents to help streamline all correspondence and make the process as pleasant and headache-free as possible:
- - [Our Code of Conduct](.github/CODE_OF_CONDUCT.md)
- - [Our Contributor Guidelines](.github/CONTRIBUTING.md)
- - [A Template for reporting Bugs/Issues](.github/ISSUE_TEMPLATE/bug_report.md)
- - [A Template for proposing new Features](.github/ISSUE_TEMPLATE/feature_request.md)
- - [A Template for creating Pull Requests](.github/PULL_REQUEST_TEMPLATE.md)
- - [Our Legal Licensing Statement (AGPL 3.0)](LICENSE.md)
+ - [Our Code of Conduct](https://github.com/haximilian/woodsman/blob/master/.github/CODE_OF_CONDUCT.md)
+ - [Our Contributor Guidelines](https://github.com/haximilian/woodsman/blob/master/.github/CONTRIBUTING.md)
+ - [A Template for reporting Bugs/Issues](https://github.com/haximilian/woodsman/blob/master/.github/ISSUE_TEMPLATE/bug_report.md)
+ - [A Template for proposing new Features](https://github.com/haximilian/woodsman/blob/master/.github/ISSUE_TEMPLATE/feature_request.md)
+ - [A Template for creating Pull Requests](https://github.com/haximilian/woodsman/blob/master/.github/PULL_REQUEST_TEMPLATE.md)
+ - [Our Legal Licensing Statement (AGPL 3.0)](https://github.com/haximilian/woodsman/blob/master/LICENSE.md)
 
-# [<img src="https://opensource.org/files/osi_symbol.png" width="50">](https://opensource.org/licenses/AGPL-3.0) License
-Copyright &copy; 2018 Haximilian<br/>
-**This project is licensed under the [GNU Affero General Public License Agreement v3.0 (AGPL-3.0)](https://opensource.org/licenses/AGPL-3.0).**<br>
-For a complete copy of the license, please see the included "LICENSE.md" file.
+ ## [<img src="https://opensource.org/files/osi_symbol.png" width="50">](https://opensource.org/licenses/AGPL-3.0) License
+ Copyright &copy; 2018 Haximilian<br/>
+ **This project is licensed under the [GNU Affero General Public License Agreement v3.0 (AGPL-3.0)](https://opensource.org/licenses/AGPL-3.0).**<br>
+ For a complete copy of the license, please see the included "LICENSE" file.
