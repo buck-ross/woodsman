@@ -11,6 +11,7 @@
   "main": "build/woodsman.min.js",
   "scripts": {
     "build": "google-closure-compiler --compilation_level ADVANCED_OPTIMIZATIONS --externs node_modules/haximilian-closure-externs/extern/amd.js --externs extern/*.js --js src/woodsman.js --language_in ECMASCRIPT6 --language_out ECMASCRIPT3 --js_output_file build/woodsman.min.js",
+    "clean": "rm -rv build",
     "doc": "jsdoc --configure .jsdoc.json .",
     "lint": "eslint --ext .js,.jsx,.jsdoc --fix .",
     "test": "mocha"
@@ -21,7 +22,7 @@
     "error"
   ],
   "devDependencies": {
-    "eslint": "^5.6.1",
+    "eslint": "^5.10.0",
     "google-closure-compiler": "^20180610.0.2",
     "haximilian-closure-externs": "^1.1.0",
     "jsdoc": "^3.5.5",

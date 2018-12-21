@@ -4,3 +4,6 @@
 
 # Ignore all compiled scripts:
 /build
+
+# Ignore the provided RunKit example:
+/runkit.js

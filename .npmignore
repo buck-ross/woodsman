@@ -3,6 +3,8 @@
 /.github
 /.gitattributes
 /.gitignore
+/CNAME
+/_config.yml
 
 # Ignore all documentation (excluding the README):
 /build/jsdoc
