@@ -45,12 +45,11 @@ describe("The ConsoleBackend provider", function() {
     console.info.restore();
     console.warn.restore();
     console.error.restore();
-    console.table.restore();
     console.group.restore();
     console.groupEnd.restore();
   }
 
-  var subject;
+  var Console;
 
   /**
   * Spoof all console methods to test output
@@ -60,7 +59,6 @@ describe("The ConsoleBackend provider", function() {
     this.sinon.stub(console, "info");
     this.sinon.stub(console, "warn");
     this.sinon.stub(console, "error");
-    this.sinon.stub(console, "table");
     this.sinon.stub(console, "group");
     this.sinon.stub(console, "groupEnd");
   });
@@ -74,7 +72,7 @@ describe("The ConsoleBackend provider", function() {
     return new Promise((resolve, reject) => {
       req([ "woodsman" ], (dependency) => {
         // Create a new ConsoleBackend object and store it in the subject variable:
-        resolve(subject = new dependency.backends.Console());
+        resolve(Console = dependency.backends.Console);
       }, (err) => {
         reject(err);
       });
@@ -85,6 +83,8 @@ describe("The ConsoleBackend provider", function() {
   * Ensure that the subject has loaded correctly
   */
   it("should be an object containing \"push,\" \"group,\" & \"groupEnd\" functions", function() {
+    var subject = new Console();
+
     assert.equal(typeof subject, "object", "The subject is not an object");
     assert.equal(typeof subject.push, "function", "The subject lacks a `push()` method");
     assert.equal(typeof subject.group, "function", "The subject lacks a `group()` method");
@@ -106,6 +106,8 @@ describe("The ConsoleBackend provider", function() {
   */
   describe("push()", function() {
     it("should work when provided with minimal input", function() {
+      var subject = new Console();
+
       // Send data:
       subject.push({
         app: "APP",
@@ -127,6 +129,8 @@ describe("The ConsoleBackend provider", function() {
     * Ensure that the callback is executed after the content is pushed
     */
     it("should call the callback uppon successful execution", function() {
+      var subject = new Console();
+
       // Gather sample data:
       var cb = this.sinon.spy();
 
@@ -153,6 +157,8 @@ describe("The ConsoleBackend provider", function() {
     * Test the output when a stacktrace is added into the mix
     */
     it("should output the correct stacktrace", function() {
+      var subject = new Console();
+
       // Gather sample data:
       var cb = this.sinon.spy();
       const ERR = new Error();
@@ -181,6 +187,8 @@ describe("The ConsoleBackend provider", function() {
     * Test the output when a timestamp is added into the mix
     */
     it("should output the correct timestamp", function() {
+      var subject = new Console();
+
       // Gather sample data:
       var cb = this.sinon.spy();
       const ERR = new Error();
@@ -211,6 +219,8 @@ describe("The ConsoleBackend provider", function() {
     * Test the output when type is "info"
     */
     it("should work correctly for the \"info\" type", function() {
+      var subject = new Console();
+
       // Gather sample data:
       var cb = this.sinon.spy();
       const ERR = new Error();
@@ -241,6 +251,8 @@ describe("The ConsoleBackend provider", function() {
     * Test the output when type is "warn"
     */
     it("should work correctly for the \"warn\" type", function() {
+      var subject = new Console();
+
       // Gather sample data:
       var cb = this.sinon.spy();
       const ERR = new Error();
@@ -271,6 +283,8 @@ describe("The ConsoleBackend provider", function() {
     * Test the output when type is "error"
     */
     it("should work correctly for the \"error\" type", function() {
+      var subject = new Console();
+
       // Gather sample data:
       var cb = this.sinon.spy();
       const ERR = new Error();
@@ -314,6 +328,8 @@ describe("The ConsoleBackend provider", function() {
     * I mean, there's basically nothing to test. Just make sure it forewards the call correctly
     */
     it("should properly foreward all calls to `console.group()`", function() {
+      var subject = new Console();
+
       // Setup the callback:
       var cb = this.sinon.spy();
       // Send data:
@@ -345,6 +361,8 @@ describe("The ConsoleBackend provider", function() {
     * Just make sure it forewards the call correctly
     */
     it("should properly foreward all calls to `console.groupEnd()`", function() {
+      var subject = new Console();
+
       // Setup the callback:
       var cb = this.sinon.spy();
 
@@ -355,6 +373,142 @@ describe("The ConsoleBackend provider", function() {
       assert(console.groupEnd.calledOnce, "The method failed to foreward the call to the backend");
       assert(cb.calledOnce, "The callback was not called exactly once");
       assert(console.groupEnd.calledBefore(cb), "The method failed to call `console.groupEnd` before the callback");
+
+      // Unspoof the console:
+      unSpoofConsole();
+    });
+  });
+
+
+  // ####################################
+  // #                                  #
+  // #    Test the shim functionality   #
+  // #                                  #
+  // ####################################
+
+
+  /**
+  * Test the shim behavior
+  */
+  describe("The constructor shim", function() {
+    /**
+    * Make sure the shim functions properly when passed a fully functional console-shim
+    */
+    it("should function when passed a fully functional console-mockup", function() {
+      // Prepare a fully functional console-mockup:
+      var mockup = {
+        log: this.sinon.spy(),
+        info: this.sinon.spy(),
+        warn: this.sinon.spy(),
+        error: this.sinon.spy(),
+        group: this.sinon.spy(),
+        groupEnd: this.sinon.spy()
+      };
+
+      // Initialize the subject:
+      var subject = new Console(mockup);
+
+      // Send data:
+      subject.group("My Group", () => { /**/ });
+      subject.push({
+        app: "APP",
+        logger: "LOGGER",
+        type: "log",
+        level: 10,
+        message: "This is a sample log message"
+      }, () => { /**/ });
+      subject.push({
+        app: "APP",
+        logger: "LOGGER",
+        type: "info",
+        level: 10,
+        message: "This is a sample info message"
+      }, () => { /**/ });
+      subject.push({
+        app: "APP",
+        logger: "LOGGER",
+        type: "warn",
+        level: 10,
+        message: "This is a sample warn message"
+      }, () => { /**/ });
+      subject.push({
+        app: "APP",
+        logger: "LOGGER",
+        type: "error",
+        level: 10,
+        message: "This is a sample error message"
+      }, () => { /**/ });
+      subject.groupEnd(() => { /**/ });
+
+      // Test output:
+      assert(mockup.group.calledOnceWithExactly("My Group"), "The backend failed to call the \"group\" function properly");
+      assert(mockup.log.calledOnceWithExactly("[APP:LOGGER@10]: This is a sample log message"), "The backend failed to push the correct message to \"log\"");
+      assert(mockup.info.calledOnceWithExactly("[APP:LOGGER@10]: This is a sample info message"), "The backend failed to push the correct message to \"info\"");
+      assert(mockup.warn.calledOnceWithExactly("[APP:LOGGER@10]: This is a sample warn message"), "The backend failed to push the correct message to \"warn\"");
+      assert(mockup.error.calledOnceWithExactly("[APP:LOGGER@10]: This is a sample error message"), "The backend failed to push the correct message to \"error\"");
+      assert(mockup.groupEnd.calledOnce, "The backend failed to call the \"groupEnd\" function");
+      assert(mockup.group.calledBefore(mockup.log), "The backend failed to call \"group\" before \"log\"");
+      assert(mockup.log.calledBefore(mockup.info), "The backend failed to call \"log\" before \"info\"");
+      assert(mockup.info.calledBefore(mockup.warn), "The backend failed to call \"info\" before \"warn\"");
+      assert(mockup.warn.calledBefore(mockup.error), "The backend failed to call \"warn\" before \"error\"");
+      assert(mockup.error.calledBefore(mockup.groupEnd), "The backend failed to call \"error\" before \"groupEnd\"");
+
+      // Unspoof the console:
+      unSpoofConsole();
+    });
+
+    /**
+    * Make sure the shim functions properly when passed a minimally functional console-shim
+    */
+    it("should function when passed a minimally functional console-mockup", function() {
+      // Prepare a minimally functional console-mockup:
+      var mockup = {
+        log: this.sinon.spy()
+      };
+
+      // Initialize the subject:
+      var subject = new Console(mockup);
+
+      // Send data:
+      subject.group("My Group", () => { /**/ });
+      subject.push({
+        app: "APP",
+        logger: "LOGGER",
+        type: "log",
+        level: 10,
+        message: "This is a sample log message"
+      }, () => { /**/ });
+      subject.push({
+        app: "APP",
+        logger: "LOGGER",
+        type: "info",
+        level: 10,
+        message: "This is a sample info message"
+      }, () => { /**/ });
+      subject.push({
+        app: "APP",
+        logger: "LOGGER",
+        type: "warn",
+        level: 10,
+        message: "This is a sample warn message"
+      }, () => { /**/ });
+      subject.push({
+        app: "APP",
+        logger: "LOGGER",
+        type: "error",
+        level: 10,
+        message: "This is a sample error message"
+      }, () => { /**/ });
+      subject.groupEnd(() => { /**/ });
+
+      // Test output:
+      assert.equal(mockup.log.callCount, 6, "The \"log\" method was not called exactly 6 times.");
+      assert(mockup.log.getCall(0).calledWithExactly("---------- BEGIN GROUP \"My Group\" ----------"), "The \"group\" method failed to provide the expected output.");
+      assert(mockup.log.getCall(1).calledWithExactly("[APP:LOGGER@10]: This is a sample log message"), "The \"log\" method failed to provide the expected output.");
+      assert(mockup.log.getCall(2).calledWithExactly("[APP:LOGGER@10]: This is a sample info message"), "The \"info\" method failed to provide the expected output.");
+      assert(mockup.log.getCall(3).calledWithExactly("[APP:LOGGER@10]: This is a sample warn message"), "The \"warn\" method failed to provide the expected output.");
+      assert(mockup.log.getCall(4).calledWithExactly("[APP:LOGGER@10]: This is a sample error message"), "The \"error\" method failed to provide the expected output.");
+      assert(mockup.log.getCall(5).calledWithExactly("---------- END GROUP ----------"), "The \"groupEnd\" method failed to provide the expected output.");
 
       // Unspoof the console:
       unSpoofConsole();

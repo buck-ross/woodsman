@@ -16,6 +16,7 @@
     "lint": "eslint --ext .js,.jsx,.jsdoc --fix .",
     "test": "mocha"
   },
+  "runkitExampleFilename": "runkit.js",
   "keywords": [
     "logging",
     "metrics",

@@ -98,6 +98,7 @@ define(() => {
   */
   var process = function() {
     // Preserve the "this" reference for scheduled functions:
+    // eslint-disable-next-line no-invalid-this
     var that = this;
 
     // Declare the current processing state:
@@ -414,8 +415,35 @@ define(() => {
   * @memberof woodsman
   * @implements {BackendAPI}
   * @constructor
+  * @param {(undefined|{log: function(...?), info: (undefined|function(...?)), warn: (undefined|function(...?)), error: (undefined|function(...?)), group: (undefined|function(...?)), groupEnd: (undefined|function())})} consoleIn The native "console" object to which to bind the backend
   */
-  var Console = function() {}; // eslint-disable-line no-empty-function
+  var Console = function(consoleIn) {
+    // Set the console:
+    if (typeof consoleIn !== "object" || typeof consoleIn.log !== "function")
+      consoleIn = console;
+
+    // Set local methods based on console content:
+    this["log"] = consoleIn.log;
+    if (typeof consoleIn.info === "function")
+      this["info"] = consoleIn.info;
+    else
+      this["info"] = consoleIn.log;
+    if (typeof consoleIn.warn === "function")
+      this["warn"] = consoleIn.warn;
+    else
+      this["warn"] = consoleIn.log;
+    if (typeof consoleIn.error === "function")
+      this["error"] = consoleIn.error;
+    else
+      this["error"] = consoleIn.log;
+    if (typeof consoleIn.group === "function" && typeof consoleIn.groupEnd === "function") {
+      this.groupLocal = consoleIn.group;
+      this.groupEndLocal = consoleIn.groupEnd;
+    } else {
+      this.groupLocal = (name) => { consoleIn.log("---------- BEGIN GROUP \"" + name + "\" ----------"); };
+      this.groupEndLocal = () => { consoleIn.log("---------- END GROUP ----------"); };
+    }
+  };
 
   /**
   * Push the provided entry or group of entries to the backend.
@@ -434,7 +462,7 @@ define(() => {
       message += "\n" + input.trace;
 
     // Print the message to the console:
-    console[input["type"]](message);
+    this[input["type"]](message);
     callback();
   };
 
@@ -445,7 +473,7 @@ define(() => {
   * @param {!function(): null} callback Push is neither explicitly synchronous nor explicitly asynchronous.
   */
   Console.prototype.group = function(name, callback) {
-    console.group(name);
+    this.groupLocal(name);
     callback();
   };
 
@@ -455,7 +483,7 @@ define(() => {
   * @override
   */
   Console.prototype.groupEnd = function(callback) {
-    console.groupEnd();
+    this.groupEndLocal();
     callback();
   };
 
