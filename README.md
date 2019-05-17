@@ -122,6 +122,16 @@ Backend objects represent different locations where logging information can be s
 #### Console Backend
 The `Console` is about as simple as it gets. It just takes output from *Woodsman*, re-formats it into a` string`, and outputs it to the built-in `console` object. Constructing a `Console` Backend can be done by calling `var myConsole = new woodsman.backends.Console()`, but is is more usual to see it written inline within the [Manager Config](#manager-config).
 
+The minimal requirement for the `Console` is just a global `console` object with a `log` method. If necessary, however, the `Console` constructor exposes a shim which can override the use of the global `console` object as follows:
+```javascript
+var myConsole = new woodsman.backends.Console({
+  log: function() { /* This is all that's required */ },
+  info: function() { /* Optional "info" shim */ },
+  warn: function() { /* Optional "warn" shim */ },
+  error: function() { /* Optional "error" shim */ }
+});
+```
+
 ## Interacting with our Community
 Welcome to the *Woodsman* Community! We're happy you're here! We're doing our best to make *Woodsman* be the perfect logging API that you always wanted, but before you reach out to us with your questions or complaints, please be sure to read through the following documents to help streamline all correspondence and make the process as pleasant and headache-free as possible:
  - [Our Code of Conduct](https://github.com/haximilian/woodsman/blob/master/.github/CODE_OF_CONDUCT.md)

@@ -1,0 +1,1 @@
+Divide the library source code into multiple different files, and bundle them all together using Closure Compiler @1.0.0-ALPHA.1
