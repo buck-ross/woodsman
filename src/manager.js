@@ -1,9 +1,24 @@
-// ###################################
-// #																 #
-// #		Define the `Manager` class	 #
-// #																 #
-// ###################################
-"use strict";
+/*
+* @fileoverview Implement Woodsman's Manager class
+* @author Haximilian <haximilian@gmail.com>
+* @module woodsman
+* Copyright (C) 2019 Haximilian
+* This file is part of Woodsman.
+*
+* Woodsman is free software: you can redistribute it and/or modify
+* it under the terms of the GNU Lesser General Public License as published
+* by the Free Software Foundation, either version 3 of the License, or
+* (at your option) any later version.
+*
+* Woodsman is distributed in the hope that it will be useful,
+* but WITHOUT ANY WARRANTY; without even the implied warranty of
+* MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+* GNU Lesser General Public License for more details.
+*
+* You should have received a copy of the GNU Lesser General Public License
+* along with Woodsman. If not, see <https://www.gnu.org/licenses/>.
+*/
+
 
 
 /**
@@ -55,18 +70,17 @@ export default function Manager(config, appName) {
 	// Setup the Backends:
 	this.backends = [];
 	if (config.backends)
-		for (let key in config.backends)
-			if (Object.prototype.hasOwnProperty.call(config.backends, key))
-				this.backends.push({
-					name: key,
-					handle: config.backends[key]
-				});
+		for (let key in config.backends) if (Object.prototype.hasOwnProperty.call(config.backends, key))
+			this.backends.push({
+				name: key,
+				handle: config.backends[key]
+			});
 
 	// Setup the messaging queues:
 	this.processing = false;
 	this.queue = [];
 	this.groups = {};
-};
+}
 
 /**
 * Execute the actual process of formatting the logging content & transfering it to the backends
@@ -241,6 +255,5 @@ Manager.prototype.loggerConfig = function() {
 	return out;
 };
 
-// eslint-disable-next-line capitalize-comments
 // ex: set ft=javascript ff=unix ts=4 sw=4 tw=0 noet :
 

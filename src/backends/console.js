@@ -1,9 +1,24 @@
-// ##########################################
-// #																				#
-// #		Define the `ConsoleBackend` class		#
-// #																				#
-// ##########################################
-"use strict";
+/*
+* @fileoverview Define a backend to harness the existing developer console for logging purposes
+* @author Haximilian <haximilian@gmail.com>
+* @module woodsman
+* Copyright (C) 2019 Haximilian
+* This file is part of Woodsman.
+*
+* Woodsman is free software: you can redistribute it and/or modify
+* it under the terms of the GNU Lesser General Public License as published
+* by the Free Software Foundation, either version 3 of the License, or
+* (at your option) any later version.
+*
+* Woodsman is distributed in the hope that it will be useful,
+* but WITHOUT ANY WARRANTY; without even the implied warranty of
+* MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+* GNU Lesser General Public License for more details.
+*
+* You should have received a copy of the GNU Lesser General Public License
+* along with Woodsman. If not, see <https://www.gnu.org/licenses/>.
+*/
+
 
 
 /**
@@ -15,8 +30,12 @@
 */
 export default function Console(consoleIn) {
 	// Set the console:
-	if (typeof consoleIn !== "object" || typeof consoleIn.log !== "function")
-		consoleIn = console;
+	if (typeof consoleIn !== "object" || typeof consoleIn.log !== "function") {
+		if (typeof console === "object" && typeof console.log === "function")
+			consoleIn = console;
+		else
+			throw new Error("unable to acquire a handle to the local developer console");
+	}
 
 	// Set local methods based on console content:
 	this["log"] = consoleIn.log;
@@ -39,7 +58,7 @@ export default function Console(consoleIn) {
 		this.groupLocal = (name) => { consoleIn.log("---------- BEGIN GROUP \"" + name + "\" ----------"); };
 		this.groupEndLocal = () => { consoleIn.log("---------- END GROUP ----------"); };
 	}
-};
+}
 
 /**
 * Push the provided entry or group of entries to the backend.

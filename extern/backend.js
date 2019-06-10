@@ -1,22 +1,22 @@
 /**
 * @fileoverview Define an interface for the backend plugins such that the logger can communicate with them.
-* @author Haximilian<haximilian@gmail.com>
-* @externs
-* @copyright Copyright (C) 2018 Haximilian
-* This file is part of the program Woodsman.
+* @author Haximilian <haximilian@gmail.com>
+* @module woodsman
+* Copyright (C) 2019 Haximilian
+* This file is part of Woodsman.
 *
 * Woodsman is free software: you can redistribute it and/or modify
-* it under the terms of the GNU Affero General Public License as
-* published by the Free Software Foundation, either version 3 of the
-* License, or (at your option) any later version.
+* it under the terms of the GNU Lesser General Public License as published
+* by the Free Software Foundation, either version 3 of the License, or
+* (at your option) any later version.
 *
 * Woodsman is distributed in the hope that it will be useful,
 * but WITHOUT ANY WARRANTY; without even the implied warranty of
 * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-* GNU Affero General Public License for more details.
+* GNU Lesser General Public License for more details.
 *
-* You should have received a copy of the GNU Affero General Public License
-* along with this program.  If not, see <https://www.gnu.org/licenses/>.
+* You should have received a copy of the GNU Lesser General Public License
+* along with Woodsman. If not, see <https://www.gnu.org/licenses/>.
 */
 
 /**

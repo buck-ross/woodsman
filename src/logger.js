@@ -1,9 +1,24 @@
-// ##################################
-// #																#
-// #		Define the `Logger` class		#
-// #																#
-// ##################################
-"use strict";
+/*
+* @fileoverview Implement Woodsman's Logger class
+* @author Haximilian <haximilian@gmail.com>
+* @module woodsman
+* Copyright (C) 2019 Haximilian
+* This file is part of Woodsman.
+*
+* Woodsman is free software: you can redistribute it and/or modify
+* it under the terms of the GNU Lesser General Public License as published
+* by the Free Software Foundation, either version 3 of the License, or
+* (at your option) any later version.
+*
+* Woodsman is distributed in the hope that it will be useful,
+* but WITHOUT ANY WARRANTY; without even the implied warranty of
+* MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+* GNU Lesser General Public License for more details.
+*
+* You should have received a copy of the GNU Lesser General Public License
+* along with Woodsman. If not, see <https://www.gnu.org/licenses/>.
+*/
+
 
 
 /**
@@ -52,7 +67,7 @@ export default function Logger(parent, name) {
 	this.config = parent.loggerConfig();
 	this.loggerName = name;
 	this.defaultLevel = 0;
-};
+}
 
 /**
 * Get the namespace of the current logger object
@@ -134,6 +149,5 @@ Logger.prototype.groupEnd = function() {
 	this.manager.groupEnd(this.loggerName);
 };
 
-// eslint-disable-next-line capitalize-comments
 // ex: set ft=javascript ff=unix ts=4 sw=4 tw=0 noet :
 
