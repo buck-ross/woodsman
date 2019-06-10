@@ -14,29 +14,31 @@ First, install *Woodsman* into your project. The recommended way of doing this i
 
 > npm i -P woodsman
 
-If you haven't already, go ahead and install an [AMD](https://en.wikipedia.org/wiki/Asynchronous_module_definition) loader of your choice to load *Woodsman*. We recommend [RequireJS](http://requirejs.org/), although you should theoretically be able to use any loader that follows the AMD standard. You can install RequireJS like this:
-
-> npm i -P requirejs
-
 You can now include woodsman in your project. Here's an example:
 
 ```javascript
-require([ "woodsman" ], function(woodsman) {
+var woodsman = require("woodsman");
 
-  // Create an application manager:
-  var manager = new woodsman.Manager({
-    backends: {
-      // Add a backend to output logged data to the console:
-      myConsole: new woodsman.backends.Console()
-    }
-  }, "myApp");
+// Create an application manager:
+var manager = new woodsman.Manager({
+	backends: {
+		// Add a backend to output logged data to the console:
+		myConsole: new woodsman.backends.Console()
+	}
+}, "myApp");
 
-  // Create your first logger:
-  var logger = new woodsman.Logger(manager, "myLogger");
+// Create your first logger:
+var logger = new woodsman.Logger(manager, "myLogger");
 
-  // Log some data:
-  logger.log("It works!");
+// Log some data:
+logger.log("It works!");
+```
 
+Alternatively, the library can also be loaded through AMD.
+
+```javascript
+require([ "./node_modules/woodsman/build/woodsman.amd.js" ], function(woodsman) {
+	// insert code here
 });
 ```
 
@@ -104,8 +106,8 @@ The `env` section is more complicated, and **can generally be omitted**. It is p
 ```javascript
 var manager = new Manager({
   env: {
-    // Specify a synchronous scheduling API (not recommended):
-    scheduler: function(callback) { callback(); },
+    // Use Node's `nextTick` API to schedule asynchronous tasks:
+    scheduler: process.nextTick,
 
     // Provide a custom stack-trace method:
     tracer: function() { /* Generate a stack trace here */ return trace; },
@@ -141,7 +143,7 @@ Welcome to the *Woodsman* Community! We're happy you're here! We're doing our be
  - [A Template for creating Pull Requests](https://github.com/haximilian/woodsman/blob/master/.github/PULL_REQUEST_TEMPLATE.md)
  - [Our Legal Licensing Statement (AGPL 3.0)](https://github.com/haximilian/woodsman/blob/master/LICENSE.md)
 
- ## [<img src="https://opensource.org/files/osi_symbol.png" width="50">](https://opensource.org/licenses/AGPL-3.0) License
+ ## [<img src="https://opensource.org/files/osi_symbol.png" width="50">](https://opensource.org/licenses/LGPL-3.0) License
  Copyright &copy; 2018 Haximilian<br/>
- **This project is licensed under the [GNU Affero General Public License Agreement v3.0 (AGPL-3.0)](https://opensource.org/licenses/AGPL-3.0).**<br>
+ **This project is licensed under the [GNU Lesser General Public License Agreement v3.0 (LGPL-3.0)](https://opensource.org/licenses/LGPL-3.0).**<br>
  For a complete copy of the license, please see the included "LICENSE" file.

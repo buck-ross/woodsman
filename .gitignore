@@ -5,3 +5,5 @@
 # Ignore all compiled files:
 /build
 **/build
+*.tgz
+
