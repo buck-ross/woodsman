@@ -70,9 +70,11 @@ export default function Logger(parent, name) {
 }
 
 /**
-* Get the namespace of the current logger object
+* Get the namespace of the current logger object.
 * @override
-* @return {{app: string, logger: string}} An object representing the full namespace in two parts: the "app" name, and the "logger" name
+* @return {!{app: !string, logger: !string}} An object consisting of two fields, each containing strings:<br/>
+*   `app`: The name of the application under which the current logger is instantiated<br/>
+*   `logger`: The name assigned to the current logger instance
 */
 Logger.prototype.getNamespace = function() {
 	return {

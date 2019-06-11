@@ -1,6 +1,7 @@
 /**
 * @fileoverview Declare the manager interface
 * @author Haximilian <haximilian@gmail.com>
+* @externs
 * @module woodsman
 * Copyright (C) 2019 Haximilian
 * This file is part of Woodsman.

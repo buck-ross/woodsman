@@ -141,7 +141,7 @@ Welcome to the *Woodsman* Community! We're happy you're here! We're doing our be
  - [A Template for reporting Bugs/Issues](https://github.com/haximilian/woodsman/blob/master/.github/ISSUE_TEMPLATE/bug_report.md)
  - [A Template for proposing new Features](https://github.com/haximilian/woodsman/blob/master/.github/ISSUE_TEMPLATE/feature_request.md)
  - [A Template for creating Pull Requests](https://github.com/haximilian/woodsman/blob/master/.github/PULL_REQUEST_TEMPLATE.md)
- - [Our Legal Licensing Statement (AGPL 3.0)](https://github.com/haximilian/woodsman/blob/master/LICENSE.md)
+ - [Our Legal Licensing Statement (LGPL 3.0)](https://github.com/haximilian/woodsman/blob/master/LICENSE)
 
  ## [<img src="https://opensource.org/files/osi_symbol.png" width="50">](https://opensource.org/licenses/LGPL-3.0) License
  Copyright &copy; 2018 Haximilian<br/>

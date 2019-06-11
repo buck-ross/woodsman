@@ -1,6 +1,7 @@
 /**
 * @fileoverview Define an interface for the backend plugins such that the logger can communicate with them.
 * @author Haximilian <haximilian@gmail.com>
+* @externs
 * @module woodsman
 * Copyright (C) 2019 Haximilian
 * This file is part of Woodsman.
