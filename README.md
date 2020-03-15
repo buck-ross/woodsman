@@ -8,6 +8,7 @@ An Open Source logging API for JavaScript applications of all shapes and sizes.
 ![NPM Downloads](https://img.shields.io/npm/dt/woodsman.svg)
 ![NPM Downloads/week](https://img.shields.io/npm/dw/woodsman.svg)
 ![Module Format: AMD](https://img.shields.io/badge/module%20format-amd-blue.svg)
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Fbuck-ross%2Fwoodsman.svg?type=shield)](https://app.fossa.io/projects/git%2Bgithub.com%2Fbuck-ross%2Fwoodsman?ref=badge_shield)
 
 ## Getting Started
 First, install *Woodsman* into your project. The recommended way of doing this is using [NPM](https://www.npmjs.com/) with the `--save` or `-P` option to save *Woodsman* as a dependency in your `package.json` file:
@@ -147,3 +148,6 @@ Welcome to the *Woodsman* Community! We're happy you're here! We're doing our be
  Copyright &copy; 2018 Haximilian<br/>
  **This project is licensed under the [GNU Lesser General Public License Agreement v3.0 (LGPL-3.0)](https://opensource.org/licenses/LGPL-3.0).**<br>
  For a complete copy of the license, please see the included "LICENSE" file.
+
+
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Fbuck-ross%2Fwoodsman.svg?type=large)](https://app.fossa.io/projects/git%2Bgithub.com%2Fbuck-ross%2Fwoodsman?ref=badge_large)
